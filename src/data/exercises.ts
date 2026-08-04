@@ -1,4 +1,4 @@
-import type { Exercise } from '../types';
+import type { Equipment, Exercise, MuscleGroup } from '../types';
 
 export const EXERCISES: Exercise[] = [
   // Pectoraux
@@ -85,7 +85,18 @@ export const EXERCISES: Exercise[] = [
   { id: 'corde-a-sauter', name: 'Corde à sauter', muscleGroups: ['cardio', 'mollets'], equipment: 'autre' },
 ];
 
-export const MUSCLE_GROUP_LABELS: Record<string, string> = {
+export const EQUIPMENT_LABELS: Record<Equipment, string> = {
+  barre: 'Barre',
+  halteres: 'Haltères',
+  machine: 'Machine',
+  poulie: 'Poulie',
+  'poids-du-corps': 'Poids du corps',
+  kettlebell: 'Kettlebell',
+  elastique: 'Élastique',
+  autre: 'Autre',
+};
+
+export const MUSCLE_GROUP_LABELS: Record<MuscleGroup, string> = {
   pectoraux: 'Pectoraux',
   dos: 'Dos',
   epaules: 'Épaules',

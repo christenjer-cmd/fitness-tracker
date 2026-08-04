@@ -3,7 +3,10 @@ import { useStore } from '../store/useStore';
 import { formatDate, formatDuration } from '../utils';
 
 export default function HistoryPage() {
-  const workouts = useStore((s) => s.workouts.filter((w) => w.finishedAt));
+  // Le filtrage doit rester hors du sélecteur : un nouveau tableau à chaque rendu
+  // ferait boucler useSyncExternalStore.
+  const allWorkouts = useStore((s) => s.workouts);
+  const workouts = useMemo(() => allWorkouts.filter((w) => w.finishedAt), [allWorkouts]);
   const runs = useStore((s) => s.runs);
   const customExercises = useStore((s) => s.customExercises);
   const deleteWorkout = useStore((s) => s.deleteWorkout);
@@ -14,6 +17,7 @@ export default function HistoryPage() {
   const [tab, setTab] = useState<'seances' | 'progression'>('seances');
   const [expanded, setExpanded] = useState<string | null>(null);
   const [selectedExercise, setSelectedExercise] = useState<string>('');
+  const [metric, setMetric] = useState<'best' | 'volume'>('best');
   const fileInput = useRef<HTMLInputElement>(null);
 
   // Exercices réellement pratiqués, pour la vue progression
@@ -31,7 +35,9 @@ export default function HistoryPage() {
         if (!we || we.sets.length === 0) return null;
         const best = Math.max(...we.sets.map((s) => s.weightKg));
         const volume = we.sets.reduce((acc, s) => acc + s.weightKg * s.reps, 0);
-        return { date: w.date, best, volume, sets: we.sets };
+        // Formule d'Epley : permet de comparer une série lourde et une série longue.
+        const oneRm = Math.max(...we.sets.map((s) => s.weightKg * (1 + s.reps / 30)));
+        return { date: w.date, best, volume, oneRm, sets: we.sets };
       })
       .filter((x): x is NonNullable<typeof x> => x !== null)
       .sort((a, b) => (a.date < b.date ? -1 : 1));
@@ -178,17 +184,65 @@ export default function HistoryPage() {
 
           {progression.length > 0 && (
             <>
+              <div className="grid grid-cols-3 gap-2">
+                <div className="bg-slate-900 rounded-xl p-3">
+                  <p className="text-[10px] text-slate-400">Record</p>
+                  <p className="text-lg font-bold text-accent leading-tight">
+                    {Math.max(...progression.map((p) => p.best))}
+                    <span className="text-xs font-normal text-slate-400"> kg</span>
+                  </p>
+                </div>
+                <div className="bg-slate-900 rounded-xl p-3">
+                  <p className="text-[10px] text-slate-400">1RM estimé</p>
+                  <p className="text-lg font-bold text-accent leading-tight">
+                    {Math.round(Math.max(...progression.map((p) => p.oneRm)))}
+                    <span className="text-xs font-normal text-slate-400"> kg</span>
+                  </p>
+                </div>
+                <div className="bg-slate-900 rounded-xl p-3">
+                  <p className="text-[10px] text-slate-400">Séances</p>
+                  <p className="text-lg font-bold leading-tight">{progression.length}</p>
+                </div>
+              </div>
+
               <div className="bg-slate-900 rounded-xl p-3">
-                <p className="text-xs text-slate-400 mb-2">Poids max par séance (kg)</p>
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-xs text-slate-400">
+                    {metric === 'best' ? 'Poids max par séance (kg)' : 'Volume par séance (kg)'}
+                  </p>
+                  <div className="flex gap-1">
+                    <button
+                      onClick={() => setMetric('best')}
+                      className={`text-[10px] px-2 py-0.5 rounded ${
+                        metric === 'best' ? 'bg-accent text-white' : 'bg-slate-800 text-slate-400'
+                      }`}
+                    >
+                      Poids
+                    </button>
+                    <button
+                      onClick={() => setMetric('volume')}
+                      className={`text-[10px] px-2 py-0.5 rounded ${
+                        metric === 'volume' ? 'bg-accent text-white' : 'bg-slate-800 text-slate-400'
+                      }`}
+                    >
+                      Volume
+                    </button>
+                  </div>
+                </div>
                 <div className="flex items-end gap-1 h-24">
                   {progression.slice(-12).map((p, i) => {
-                    const max = Math.max(...progression.map((x) => x.best), 1);
+                    const shown = progression.slice(-12);
+                    const max = Math.max(...shown.map((x) => x[metric]), 1);
+                    const value = p[metric];
                     return (
-                      <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                        <span className="text-[10px] text-slate-400">{p.best}</span>
+                      <div key={i} className="flex-1 flex flex-col items-center gap-1 min-w-0">
+                        <span className="text-[10px] text-slate-400 truncate">
+                          {Math.round(value)}
+                        </span>
                         <div
                           className="w-full bg-accent rounded-t"
-                          style={{ height: `${(p.best / max) * 100}%`, minHeight: 2 }}
+                          style={{ height: `${(value / max) * 100}%`, minHeight: 2 }}
+                          title={`${formatDate(p.date)} : ${Math.round(value)}`}
                         />
                       </div>
                     );

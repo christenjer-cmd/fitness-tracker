@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# L'app utilise BrowserRouter : sans cette règle, recharger /historique renvoie une 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

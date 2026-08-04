@@ -15,12 +15,17 @@ export default function WorkoutPage() {
   const addSet = useStore((s) => s.addSet);
   const updateSet = useStore((s) => s.updateSet);
   const removeSet = useStore((s) => s.removeSet);
+  const setExerciseNotes = useStore((s) => s.setExerciseNotes);
   const lastPerformance = useStore((s) => s.lastPerformance);
   const allExercises = useStore((s) => s.allExercises);
+  const showRpe = useStore((s) => s.showRpe);
+  const toggleRpe = useStore((s) => s.toggleRpe);
+  const soundEnabled = useStore((s) => s.soundEnabled);
+  const toggleSound = useStore((s) => s.toggleSound);
   const exercisesById = Object.fromEntries(allExercises().map((e) => [e.id, e]));
 
   const [pickerOpen, setPickerOpen] = useState(false);
-  const [restStartedAt, setRestStartedAt] = useState<number | null>(null);
+  const [rest, setRest] = useState<{ at: number; exerciseId: string } | null>(null);
 
   // Re-render chaque minute pour la durée de séance
   const [, setTick] = useState(0);
@@ -84,6 +89,25 @@ export default function WorkoutPage() {
         </button>
       </div>
 
+      <div className="flex gap-2">
+        <button
+          onClick={toggleRpe}
+          className={`text-xs px-3 py-1 rounded-full ${
+            showRpe ? 'bg-accent text-white' : 'bg-slate-800 text-slate-400'
+          }`}
+        >
+          RPE {showRpe ? 'affiché' : 'masqué'}
+        </button>
+        <button
+          onClick={toggleSound}
+          className={`text-xs px-3 py-1 rounded-full ${
+            soundEnabled ? 'bg-accent text-white' : 'bg-slate-800 text-slate-400'
+          }`}
+        >
+          {soundEnabled ? '🔔 Son actif' : '🔕 Son coupé'}
+        </button>
+      </div>
+
       {activeWorkout.exercises.map((we) => {
         const ex = exercisesById[we.exerciseId];
         const prev = lastPerformance(we.exerciseId);
@@ -114,7 +138,7 @@ export default function WorkoutPage() {
                     onClick={() => {
                       const nowCompleted = !s.completed;
                       updateSet(activeWorkout.id, we.id, s.id, { completed: nowCompleted });
-                      if (nowCompleted) setRestStartedAt(Date.now());
+                      if (nowCompleted) setRest({ at: Date.now(), exerciseId: we.exerciseId });
                     }}
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm shrink-0 ${
                       s.completed ? 'bg-accent text-white' : 'bg-slate-800 text-slate-500'
@@ -143,7 +167,28 @@ export default function WorkoutPage() {
                     }
                     className="bg-slate-800 rounded-lg px-2 py-1.5 text-sm w-14 text-center"
                   />
-                  <span className="text-xs text-slate-500">reps</span>
+                  <span className="text-xs text-slate-500">{showRpe ? '' : 'reps'}</span>
+                  {showRpe && (
+                    <>
+                      <input
+                        type="number"
+                        inputMode="numeric"
+                        min={1}
+                        max={10}
+                        step={0.5}
+                        placeholder="-"
+                        value={s.rpe ?? ''}
+                        onFocus={(e) => e.target.select()}
+                        onChange={(e) =>
+                          updateSet(activeWorkout.id, we.id, s.id, {
+                            rpe: e.target.value === '' ? undefined : Number(e.target.value),
+                          })
+                        }
+                        className="bg-slate-800 rounded-lg px-1 py-1.5 text-sm w-11 text-center"
+                      />
+                      <span className="text-xs text-slate-500">RPE</span>
+                    </>
+                  )}
                   <button
                     onClick={() => removeSet(activeWorkout.id, we.id, s.id)}
                     className="text-slate-500 text-xs ml-auto px-1"
@@ -160,6 +205,13 @@ export default function WorkoutPage() {
             >
               + Ajouter une série
             </button>
+
+            <input
+              value={we.notes ?? ''}
+              onChange={(e) => setExerciseNotes(activeWorkout.id, we.id, e.target.value)}
+              placeholder="Note (sensation, réglage machine...)"
+              className="mt-2 w-full bg-transparent text-xs text-slate-300 placeholder:text-slate-600 border-b border-slate-800 focus:border-accent outline-none py-1"
+            />
           </div>
         );
       })}
@@ -181,8 +233,12 @@ export default function WorkoutPage() {
         />
       )}
 
-      {restStartedAt !== null && (
-        <RestTimer startedAt={restStartedAt} onDismiss={() => setRestStartedAt(null)} />
+      {rest !== null && (
+        <RestTimer
+          exerciseId={rest.exerciseId}
+          startedAt={rest.at}
+          onDismiss={() => setRest(null)}
+        />
       )}
     </div>
   );

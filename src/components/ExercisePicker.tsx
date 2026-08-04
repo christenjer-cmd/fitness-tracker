@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useStore } from '../store/useStore';
-import { MUSCLE_GROUP_LABELS } from '../data/exercises';
+import { EQUIPMENT_LABELS, MUSCLE_GROUP_LABELS } from '../data/exercises';
 import type { Equipment, MuscleGroup } from '../types';
 
 interface Props {
@@ -15,6 +15,8 @@ export default function ExercisePicker({ onSelect, onClose }: Props) {
   const [filter, setFilter] = useState<MuscleGroup | 'tous'>('tous');
   const [showCustomForm, setShowCustomForm] = useState(false);
   const [customName, setCustomName] = useState('');
+  const [customGroup, setCustomGroup] = useState<MuscleGroup>('pectoraux');
+  const [customEquipment, setCustomEquipment] = useState<Equipment>('barre');
 
   const exercises = allExercises();
 
@@ -78,34 +80,72 @@ export default function ExercisePicker({ onSelect, onClose }: Props) {
       <div className="p-3 border-t border-slate-800">
         {!showCustomForm ? (
           <button
-            onClick={() => setShowCustomForm(true)}
+            onClick={() => {
+              // La recherche en cours et le filtre actif sont de bonnes valeurs de départ.
+              setCustomName(query.trim());
+              if (filter !== 'tous') setCustomGroup(filter);
+              setShowCustomForm(true);
+            }}
             className="w-full bg-slate-800 text-accent rounded-lg py-2 text-sm font-medium"
           >
             + Créer un exercice personnalisé
           </button>
         ) : (
-          <div className="flex gap-2">
+          <div className="space-y-2">
             <input
               autoFocus
               value={customName}
               onChange={(e) => setCustomName(e.target.value)}
               placeholder="Nom de l'exercice"
-              className="flex-1 bg-slate-800 rounded-lg px-3 py-2 text-sm outline-none"
+              className="w-full bg-slate-800 rounded-lg px-3 py-2 text-sm outline-none"
             />
-            <button
-              onClick={() => {
-                if (!customName.trim()) return;
-                const ex = addCustomExercise({
-                  name: customName.trim(),
-                  muscleGroups: ['corps-entier'],
-                  equipment: 'autre',
-                });
-                onSelect(ex.id);
-              }}
-              className="bg-accent text-white rounded-lg px-4 py-2 text-sm font-medium"
-            >
-              Ajouter
-            </button>
+            <div className="flex gap-2">
+              <select
+                value={customGroup}
+                onChange={(e) => setCustomGroup(e.target.value as MuscleGroup)}
+                className="flex-1 bg-slate-800 rounded-lg px-2 py-2 text-sm min-w-0"
+              >
+                {(Object.keys(MUSCLE_GROUP_LABELS) as MuscleGroup[]).map((g) => (
+                  <option key={g} value={g}>
+                    {MUSCLE_GROUP_LABELS[g]}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={customEquipment}
+                onChange={(e) => setCustomEquipment(e.target.value as Equipment)}
+                className="flex-1 bg-slate-800 rounded-lg px-2 py-2 text-sm min-w-0"
+              >
+                {(Object.keys(EQUIPMENT_LABELS) as Equipment[]).map((eq) => (
+                  <option key={eq} value={eq}>
+                    {EQUIPMENT_LABELS[eq]}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  if (!customName.trim()) return;
+                  const ex = addCustomExercise({
+                    name: customName.trim(),
+                    muscleGroups: [customGroup],
+                    equipment: customEquipment,
+                  });
+                  onSelect(ex.id);
+                }}
+                disabled={!customName.trim()}
+                className="flex-1 bg-accent text-white rounded-lg px-4 py-2 text-sm font-medium disabled:opacity-40"
+              >
+                Ajouter
+              </button>
+              <button
+                onClick={() => setShowCustomForm(false)}
+                className="px-4 bg-slate-800 text-slate-300 rounded-lg text-sm"
+              >
+                Annuler
+              </button>
+            </div>
           </div>
         )}
       </div>

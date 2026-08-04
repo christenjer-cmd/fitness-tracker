@@ -12,6 +12,15 @@ interface StoreState {
   workouts: WorkoutSession[];
   runs: RunSession[];
 
+  // Préférences
+  /** Temps de repos retenu par exercice, en secondes. */
+  restSecondsByExercise: Record<string, number>;
+  showRpe: boolean;
+  soundEnabled: boolean;
+  setRestSeconds: (exerciseId: string, seconds: number) => void;
+  toggleRpe: () => void;
+  toggleSound: () => void;
+
   // Exercises
   addCustomExercise: (ex: Omit<Exercise, 'id' | 'isCustom'>) => Exercise;
   allExercises: () => Exercise[];
@@ -24,6 +33,7 @@ interface StoreState {
   addExerciseToWorkout: (workoutId: string, exerciseId: string) => void;
   removeExerciseFromWorkout: (workoutId: string, workoutExerciseId: string) => void;
   addSet: (workoutId: string, workoutExerciseId: string, prev?: Partial<SetEntry>) => void;
+  setExerciseNotes: (workoutId: string, workoutExerciseId: string, notes: string) => void;
   updateSet: (workoutId: string, workoutExerciseId: string, setId: string, patch: Partial<SetEntry>) => void;
   removeSet: (workoutId: string, workoutExerciseId: string, setId: string) => void;
 
@@ -43,6 +53,17 @@ export const useStore = create<StoreState>()(
       customExercises: [],
       workouts: [],
       runs: [],
+
+      restSecondsByExercise: {},
+      showRpe: false,
+      soundEnabled: true,
+      setRestSeconds: (exerciseId, seconds) => {
+        set((state) => ({
+          restSecondsByExercise: { ...state.restSecondsByExercise, [exerciseId]: seconds },
+        }));
+      },
+      toggleRpe: () => set((state) => ({ showRpe: !state.showRpe })),
+      toggleSound: () => set((state) => ({ soundEnabled: !state.soundEnabled })),
 
       addCustomExercise: (ex) => {
         const newEx: Exercise = { ...ex, id: uid(), isCustom: true };
@@ -141,6 +162,20 @@ export const useStore = create<StoreState>()(
               ...w,
               exercises: w.exercises.map((e) =>
                 e.id !== workoutExerciseId ? e : { ...e, sets: e.sets.filter((s) => s.id !== setId) }
+              ),
+            };
+          }),
+        }));
+      },
+
+      setExerciseNotes: (workoutId, workoutExerciseId, notes) => {
+        set((state) => ({
+          workouts: state.workouts.map((w) => {
+            if (w.id !== workoutId) return w;
+            return {
+              ...w,
+              exercises: w.exercises.map((e) =>
+                e.id !== workoutExerciseId ? e : { ...e, notes: notes || undefined }
               ),
             };
           }),
