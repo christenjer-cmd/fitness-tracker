@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "fitness-tracker",
+      "runtimeExecutable": "npm.cmd",
+      "runtimeArgs": ["--prefix", "D:\\Git\\fitness-tracker", "run", "dev"],
+      "autoPort": true
+    }
+  ]
+}
