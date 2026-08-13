@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useStore } from '../store/useStore';
 import ExercisePicker from '../components/ExercisePicker';
 import RestTimer from '../components/RestTimer';
+import { CheckIcon, CloseIcon, DumbbellIcon, PlusIcon } from '../components/icons';
 import { formatDate, formatDuration } from '../utils';
 
 export default function WorkoutPage() {
@@ -37,114 +38,144 @@ export default function WorkoutPage() {
   if (!activeWorkout) {
     const lastFinished = workouts.filter((w) => w.finishedAt).slice(0, 3);
     return (
-      <div className="flex flex-col items-center mt-16 gap-6">
-        <p className="text-slate-400 text-center">Pas de séance en cours.</p>
-        <button
-          onClick={() => startWorkout()}
-          className="bg-accent hover:bg-accent-dark text-white rounded-xl px-6 py-3 font-semibold"
-        >
-          Démarrer une séance vide
-        </button>
+      <div className="animate-fade-in">
+        <div className="card p-8 flex flex-col items-center text-center mt-6">
+          <span className="w-16 h-16 rounded-2xl bg-accent/10 border border-accent/20 grid place-items-center mb-4">
+            <DumbbellIcon className="w-8 h-8 text-accent" />
+          </span>
+          <h2 className="text-lg font-bold">Prêt à soulever ?</h2>
+          <p className="text-sm text-slate-400 mt-1 mb-6">Aucune séance en cours.</p>
+          <button onClick={() => startWorkout()} className="btn-primary w-full py-3.5">
+            Démarrer une séance
+          </button>
+        </div>
 
         {lastFinished.length > 0 && (
-          <div className="w-full space-y-2">
-            <p className="text-sm text-slate-400 text-center">ou refaire une séance récente :</p>
-            {lastFinished.map((w) => (
-              <button
-                key={w.id}
-                onClick={() => repeatWorkout(w.id)}
-                className="w-full bg-slate-900 rounded-xl px-4 py-3 text-left active:bg-slate-800"
-              >
-                <p className="font-medium">{formatDate(w.date)}</p>
-                <p className="text-xs text-slate-400 truncate">
-                  {w.exercises
-                    .map((e) => exercisesById[e.exerciseId]?.name)
-                    .filter(Boolean)
-                    .join(' · ') || 'Séance vide'}
-                </p>
-              </button>
-            ))}
+          <div className="mt-7">
+            <p className="label-micro mb-2.5">Reprendre une séance</p>
+            <div className="space-y-2">
+              {lastFinished.map((w) => (
+                <button
+                  key={w.id}
+                  onClick={() => repeatWorkout(w.id)}
+                  className="card w-full px-4 py-3 text-left active:scale-[0.99] transition flex items-center gap-3"
+                >
+                  <span className="w-9 h-9 rounded-xl bg-surface-raised grid place-items-center shrink-0">
+                    <DumbbellIcon className="w-[18px] h-[18px] text-slate-400" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-sm font-semibold">{formatDate(w.date)}</span>
+                    <span className="block text-xs text-slate-500 truncate">
+                      {w.exercises
+                        .map((e) => exercisesById[e.exerciseId]?.name)
+                        .filter(Boolean)
+                        .join(' · ') || 'Séance vide'}
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>
     );
   }
 
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm font-medium">{formatDate(activeWorkout.date)}</p>
-          <p className="text-xs text-slate-400">
-            En cours · {formatDuration(activeWorkout.startedAt)}
-          </p>
-        </div>
-        <button
-          onClick={() => {
-            if (window.confirm('Terminer la séance ?')) finishWorkout(activeWorkout.id);
-          }}
-          className="bg-accent text-white text-sm font-semibold px-3 py-1.5 rounded-lg"
-        >
-          Terminer
-        </button>
-      </div>
+  const totalSets = activeWorkout.exercises.reduce((acc, e) => acc + e.sets.length, 0);
+  const doneSets = activeWorkout.exercises.reduce(
+    (acc, e) => acc + e.sets.filter((s) => s.completed).length,
+    0
+  );
+  const volume = activeWorkout.exercises.reduce(
+    (acc, e) => acc + e.sets.reduce((v, s) => v + (s.completed ? s.weightKg * s.reps : 0), 0),
+    0
+  );
 
-      <div className="flex gap-2">
-        <button
-          onClick={toggleRpe}
-          className={`text-xs px-3 py-1 rounded-full ${
-            showRpe ? 'bg-accent text-white' : 'bg-slate-800 text-slate-400'
-          }`}
-        >
-          RPE {showRpe ? 'affiché' : 'masqué'}
-        </button>
-        <button
-          onClick={toggleSound}
-          className={`text-xs px-3 py-1 rounded-full ${
-            soundEnabled ? 'bg-accent text-white' : 'bg-slate-800 text-slate-400'
-          }`}
-        >
-          {soundEnabled ? '🔔 Son actif' : '🔕 Son coupé'}
-        </button>
+  return (
+    <div className="space-y-4 animate-fade-in">
+      <div className="card p-4">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-ring" />
+              <span className="label-micro text-accent">Séance en cours</span>
+            </div>
+            <p className="text-lg font-bold mt-1 truncate">{formatDate(activeWorkout.date)}</p>
+          </div>
+          <button
+            onClick={() => {
+              if (window.confirm('Terminer la séance ?')) finishWorkout(activeWorkout.id);
+            }}
+            className="btn-primary text-sm px-4 py-2 shrink-0"
+          >
+            Terminer
+          </button>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 mt-4">
+          {[
+            { label: 'Durée', value: formatDuration(activeWorkout.startedAt) },
+            { label: 'Séries', value: `${doneSets}/${totalSets}` },
+            { label: 'Volume', value: `${Math.round(volume)} kg` },
+          ].map((stat) => (
+            <div key={stat.label} className="bg-surface-sunken rounded-xl px-3 py-2.5">
+              <p className="label-micro">{stat.label}</p>
+              <p className="text-base font-bold tabular-nums mt-0.5">{stat.value}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex gap-2 mt-3">
+          <button onClick={toggleRpe} className={showRpe ? 'chip-on' : 'chip-off'}>
+            RPE
+          </button>
+          <button onClick={toggleSound} className={soundEnabled ? 'chip-on' : 'chip-off'}>
+            {soundEnabled ? 'Son actif' : 'Son coupé'}
+          </button>
+        </div>
       </div>
 
       {activeWorkout.exercises.map((we) => {
         const ex = exercisesById[we.exerciseId];
         const prev = lastPerformance(we.exerciseId);
         return (
-          <div key={we.id} className="bg-slate-900 rounded-xl p-3">
-            <div className="flex items-center justify-between mb-1">
-              <h3 className="font-semibold">{ex?.name ?? 'Exercice'}</h3>
+          <div key={we.id} className="card p-4 animate-fade-up">
+            <div className="flex items-start justify-between gap-2 mb-1">
+              <h3 className="font-bold leading-tight">{ex?.name ?? 'Exercice'}</h3>
               <button
                 onClick={() => removeExerciseFromWorkout(activeWorkout.id, we.id)}
-                className="text-slate-500 text-xs"
+                className="text-slate-600 active:text-slate-400 p-1 -m-1 shrink-0"
+                aria-label="Retirer l'exercice"
               >
-                Retirer
+                <CloseIcon className="w-4 h-4" />
               </button>
             </div>
 
             {prev && (
-              <p className="text-xs text-slate-500 mb-2">
-                Dernière fois ({formatDate(prev.date)}) :{' '}
-                {prev.sets.map((s) => `${s.weightKg}kg×${s.reps}`).join(' · ')}
+              <p className="text-xs text-slate-500 mb-3">
+                <span className="text-slate-600">Dernière fois · </span>
+                {prev.sets.map((s) => `${s.weightKg}×${s.reps}`).join(' · ')}
               </p>
             )}
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               {we.sets.map((s, i) => (
                 <div key={s.id} className="flex items-center gap-2">
-                  <span className="text-xs text-slate-500 w-5">{i + 1}</span>
+                  <span className="text-xs text-slate-600 w-3 tabular-nums shrink-0">{i + 1}</span>
                   <button
                     onClick={() => {
                       const nowCompleted = !s.completed;
                       updateSet(activeWorkout.id, we.id, s.id, { completed: nowCompleted });
                       if (nowCompleted) setRest({ at: Date.now(), exerciseId: we.exerciseId });
                     }}
-                    className={`w-8 h-8 rounded-full flex items-center justify-center text-sm shrink-0 ${
-                      s.completed ? 'bg-accent text-white' : 'bg-slate-800 text-slate-500'
+                    className={`w-9 h-9 rounded-xl grid place-items-center shrink-0 transition active:scale-90 ${
+                      s.completed
+                        ? 'bg-accent text-accent-ink shadow-glow'
+                        : 'bg-surface-sunken border border-line text-slate-700'
                     }`}
+                    aria-label={s.completed ? 'Série validée' : 'Valider la série'}
                   >
-                    {s.completed ? '✓' : ''}
+                    <CheckIcon className="w-4 h-4" />
                   </button>
                   <input
                     type="number"
@@ -154,9 +185,9 @@ export default function WorkoutPage() {
                     onChange={(e) =>
                       updateSet(activeWorkout.id, we.id, s.id, { weightKg: Number(e.target.value) })
                     }
-                    className="bg-slate-800 rounded-lg px-2 py-1.5 text-sm w-16 text-center"
+                    className="field px-2 py-2 text-sm w-16 text-center font-semibold"
                   />
-                  <span className="text-xs text-slate-500">kg ×</span>
+                  <span className="text-[10px] text-slate-600">KG</span>
                   <input
                     type="number"
                     inputMode="numeric"
@@ -165,9 +196,9 @@ export default function WorkoutPage() {
                     onChange={(e) =>
                       updateSet(activeWorkout.id, we.id, s.id, { reps: Number(e.target.value) })
                     }
-                    className="bg-slate-800 rounded-lg px-2 py-1.5 text-sm w-14 text-center"
+                    className="field px-2 py-2 text-sm w-14 text-center font-semibold"
                   />
-                  <span className="text-xs text-slate-500">{showRpe ? '' : 'reps'}</span>
+                  <span className="text-[10px] text-slate-600">{showRpe ? '' : 'REPS'}</span>
                   {showRpe && (
                     <>
                       <input
@@ -184,16 +215,17 @@ export default function WorkoutPage() {
                             rpe: e.target.value === '' ? undefined : Number(e.target.value),
                           })
                         }
-                        className="bg-slate-800 rounded-lg px-1 py-1.5 text-sm w-11 text-center"
+                        className="field px-1 py-2 text-sm w-11 text-center font-semibold"
                       />
-                      <span className="text-xs text-slate-500">RPE</span>
+                      <span className="text-[10px] text-slate-600">RPE</span>
                     </>
                   )}
                   <button
                     onClick={() => removeSet(activeWorkout.id, we.id, s.id)}
-                    className="text-slate-500 text-xs ml-auto px-1"
+                    className="text-slate-700 active:text-slate-500 ml-auto p-1 shrink-0"
+                    aria-label="Supprimer la série"
                   >
-                    ✕
+                    <CloseIcon className="w-3.5 h-3.5" />
                   </button>
                 </div>
               ))}
@@ -201,16 +233,17 @@ export default function WorkoutPage() {
 
             <button
               onClick={() => addSet(activeWorkout.id, we.id)}
-              className="mt-2 w-full text-accent text-sm font-medium border border-dashed border-slate-700 rounded-lg py-1.5"
+              className="mt-3 w-full text-accent text-sm font-semibold border border-dashed border-accent/25 rounded-xl py-2 active:bg-accent/5 transition flex items-center justify-center gap-1.5"
             >
-              + Ajouter une série
+              <PlusIcon className="w-4 h-4" />
+              Série
             </button>
 
             <input
               value={we.notes ?? ''}
               onChange={(e) => setExerciseNotes(activeWorkout.id, we.id, e.target.value)}
               placeholder="Note (sensation, réglage machine...)"
-              className="mt-2 w-full bg-transparent text-xs text-slate-300 placeholder:text-slate-600 border-b border-slate-800 focus:border-accent outline-none py-1"
+              className="mt-3 w-full bg-transparent text-xs text-slate-300 placeholder:text-slate-700 border-b border-line focus:border-accent/50 outline-none py-1.5 transition"
             />
           </div>
         );
@@ -218,9 +251,10 @@ export default function WorkoutPage() {
 
       <button
         onClick={() => setPickerOpen(true)}
-        className="w-full bg-slate-800 text-accent font-semibold rounded-xl py-3"
+        className="btn-accent-soft w-full py-3.5 flex items-center justify-center gap-2"
       >
-        + Ajouter un exercice
+        <PlusIcon className="w-5 h-5" />
+        Ajouter un exercice
       </button>
 
       {pickerOpen && (

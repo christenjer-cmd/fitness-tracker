@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { useStore } from '../store/useStore';
 import { parseGarminFile, type ParsedRun } from '../garmin';
+import { UploadIcon } from './icons';
 import { formatDate } from '../utils';
 
 interface Candidate extends ParsedRun {
@@ -87,18 +88,21 @@ export default function GarminImport() {
   const selectedCount = candidates?.filter((c) => c.selected).length ?? 0;
 
   return (
-    <div className="bg-slate-900 rounded-xl p-4 space-y-3">
-      <div>
-        <h2 className="font-semibold">Importer depuis Garmin</h2>
-        <p className="text-xs text-slate-500 mt-0.5">
-          Fichier .tcx ou .gpx d'une activité, ou l'export .csv de ta liste d'activités.
-        </p>
+    <div className="card p-4 space-y-3">
+      <div className="flex items-center gap-2.5">
+        <span className="w-9 h-9 rounded-xl bg-surface-sunken grid place-items-center shrink-0">
+          <UploadIcon className="w-[18px] h-[18px] text-slate-400" />
+        </span>
+        <div className="min-w-0">
+          <h2 className="font-bold leading-tight">Importer depuis Garmin</h2>
+          <p className="text-xs text-slate-500 mt-0.5">Fichier .tcx, .gpx ou export .csv</p>
+        </div>
       </div>
 
       <button
         onClick={() => fileInput.current?.click()}
         disabled={busy}
-        className="w-full bg-slate-800 text-accent font-medium rounded-lg py-2.5 text-sm disabled:opacity-50"
+        className="btn-soft w-full py-2.5 text-sm"
       >
         {busy ? 'Lecture du fichier...' : 'Choisir un fichier'}
       </button>
@@ -139,8 +143,8 @@ export default function GarminImport() {
             {candidates.map((c) => (
               <label
                 key={c.externalId}
-                className={`flex items-start gap-2.5 bg-slate-800 rounded-lg px-3 py-2 ${
-                  c.alreadyImported ? 'opacity-60' : ''
+                className={`flex items-start gap-2.5 bg-surface-sunken border border-line rounded-xl px-3 py-2.5 ${
+                  c.alreadyImported ? 'opacity-50' : ''
                 }`}
               >
                 <input
@@ -168,7 +172,7 @@ export default function GarminImport() {
             <button
               onClick={confirmImport}
               disabled={selectedCount === 0}
-              className="flex-1 bg-accent text-white font-semibold rounded-lg py-2.5 text-sm disabled:opacity-40"
+              className="btn-primary flex-1 py-2.5 text-sm"
             >
               Importer {selectedCount > 0 ? selectedCount : ''}
             </button>
@@ -177,7 +181,7 @@ export default function GarminImport() {
                 setCandidates(null);
                 setErrors([]);
               }}
-              className="px-4 bg-slate-800 text-slate-300 rounded-lg text-sm"
+              className="btn-soft px-5 py-2.5 text-sm"
             >
               Annuler
             </button>

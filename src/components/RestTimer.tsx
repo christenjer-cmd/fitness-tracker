@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useStore } from '../store/useStore';
+import { CloseIcon, TimerIcon } from './icons';
 
 interface Props {
   /** Exercice qui a déclenché le repos : la durée choisie est retenue pour lui. */
@@ -76,38 +77,77 @@ export default function RestTimer({ exerciseId, startedAt, onDismiss }: Props) {
 
   const progress = Math.min(100, Math.max(0, (elapsed / target) * 100));
 
+  // Anneau de progression : plus lisible d'un coup d'œil qu'une barre fine.
+  const radius = 15;
+  const circumference = 2 * Math.PI * radius;
+
   return (
-    <div className="fixed bottom-16 left-0 right-0 z-10 px-3 pb-2">
+    <div className="fixed bottom-[4.6rem] left-0 right-0 z-30 px-4 pb-[env(safe-area-inset-bottom)]">
       <div
-        className={`max-w-md mx-auto rounded-xl overflow-hidden shadow-lg ${
-          done ? 'bg-accent' : 'bg-slate-800'
+        className={`max-w-md mx-auto rounded-2xl border backdrop-blur-xl shadow-card animate-scale-in ${
+          done ? 'bg-accent/90 border-accent text-accent-ink' : 'bg-surface-raised/95 border-line'
         }`}
       >
-        {!done && (
-          <div className="h-0.5 bg-slate-700">
-            <div className="h-full bg-accent transition-all" style={{ width: `${progress}%` }} />
-          </div>
-        )}
-        <div className="px-4 py-2.5 flex items-center gap-3">
-          <span className="text-lg font-bold tabular-nums w-14 shrink-0">
-            {done ? fmt(-Math.abs(remaining)) : fmt(remaining)}
+        <div className="px-3 py-2.5 flex items-center gap-3">
+          <span className="relative w-10 h-10 shrink-0 grid place-items-center">
+            <svg className="absolute inset-0 -rotate-90" viewBox="0 0 36 36">
+              <circle
+                cx="18"
+                cy="18"
+                r={radius}
+                fill="none"
+                strokeWidth="3"
+                className={done ? 'stroke-accent-ink/25' : 'stroke-white/10'}
+              />
+              <circle
+                cx="18"
+                cy="18"
+                r={radius}
+                fill="none"
+                strokeWidth="3"
+                strokeLinecap="round"
+                className={done ? 'stroke-accent-ink' : 'stroke-accent'}
+                strokeDasharray={circumference}
+                strokeDashoffset={circumference * (1 - progress / 100)}
+                style={{ transition: 'stroke-dashoffset 0.5s linear' }}
+              />
+            </svg>
+            <TimerIcon className={`w-4 h-4 ${done ? 'text-accent-ink' : 'text-accent'}`} />
           </span>
-          <span className="text-xs opacity-80 shrink-0">{done ? 'Repos terminé !' : 'Repos'}</span>
+
+          <span className="min-w-0">
+            <span className="block text-lg font-bold tabular-nums leading-none">
+              {done ? fmt(-Math.abs(remaining)) : fmt(remaining)}
+            </span>
+            <span className={`block text-[10px] mt-0.5 ${done ? 'opacity-70' : 'text-slate-500'}`}>
+              {done ? 'Repos terminé' : 'Repos en cours'}
+            </span>
+          </span>
+
           <div className="flex gap-1 ml-auto">
             {PRESETS.map((p) => (
               <button
                 key={p}
                 onClick={() => setRestSeconds(exerciseId, p)}
-                className={`text-xs px-2 py-1 rounded ${
-                  target === p ? 'bg-white/20 font-semibold' : 'opacity-60'
+                className={`text-[11px] px-2 py-1 rounded-lg transition active:scale-90 ${
+                  target === p
+                    ? done
+                      ? 'bg-accent-ink/20 font-bold'
+                      : 'bg-accent/20 text-accent font-bold'
+                    : 'text-slate-500'
                 }`}
               >
-                {p}s
+                {p}
               </button>
             ))}
           </div>
-          <button onClick={onDismiss} className="opacity-70 px-1 shrink-0" aria-label="Fermer">
-            ✕
+
+          <button
+            onClick={onDismiss}
+            className={`p-1.5 shrink-0 rounded-lg ${done ? 'opacity-70' : 'text-slate-500'}`}
+            aria-label="Fermer"
+          >
+            <CloseIcon className="w-4 h-4" />
           </button>
         </div>
       </div>
