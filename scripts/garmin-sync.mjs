@@ -53,6 +53,22 @@ function readCredentials() {
 
   if (fs.existsSync(CREDENTIALS_FILE)) {
     const raw = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, 'utf8'));
+    // Le fichier est livré avec des valeurs d'exemple : mieux vaut le dire
+    // clairement que de laisser Garmin répondre « identifiants invalides ».
+    const stillPlaceholder =
+      /exemple\.com$/i.test(raw.email ?? '') || /^ton-mot-de-passe$/i.test(raw.password ?? '');
+    if (stillPlaceholder) {
+      console.error(
+        [
+          `Le fichier ${path.basename(CREDENTIALS_FILE)} contient encore les valeurs d'exemple.`,
+          '',
+          'Ouvre-le et remplace :',
+          '  "email"    par ton adresse de connexion Garmin Connect',
+          '  "password" par ton mot de passe Garmin Connect',
+        ].join('\n')
+      );
+      process.exit(1);
+    }
     if (raw.email && raw.password) return { username: raw.email, password: raw.password };
   }
 
@@ -183,7 +199,7 @@ export function toWorkout(activity, exerciseSets) {
 
 // Dépose le fichier sur le dépôt : GitHub reconstruit le site, et l'app va
 // ensuite lire les données toute seule à son ouverture.
-function publishToGitHub(filePath) {
+export function publishToGitHub(filePath) {
   const git = (...gitArgs) =>
     execFileSync('git', gitArgs, { cwd: projectRoot, encoding: 'utf8', stdio: 'pipe' });
 
