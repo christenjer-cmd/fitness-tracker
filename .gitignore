@@ -4,3 +4,8 @@ dist
 .DS_Store
 dev-out.log
 dev-err.log
+
+# Identifiants et jetons Garmin, strictement locaux
+garmin.local.json
+.garmin-tokens/
+garmin-export.json

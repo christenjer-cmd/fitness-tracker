@@ -1,6 +1,8 @@
 // Import des courses depuis Garmin Connect.
 // Formats acceptés : .tcx et .gpx (export d'une activité), .csv (export de la liste d'activités).
 
+import type { ImportedWorkout } from './types';
+
 export interface ParsedRun {
   externalId: string;
   date: string;
@@ -12,6 +14,8 @@ export interface ParsedRun {
 
 export interface ParseResult {
   runs: ParsedRun[];
+  /** Séances de musculation, présentes uniquement dans les fichiers de synchronisation. */
+  workouts: ImportedWorkout[];
   errors: string[];
 }
 
@@ -311,7 +315,7 @@ function findColumn(headers: string[], candidates: string[]): number {
 function parseCsv(text: string): ParseResult {
   const firstLine = text.slice(0, text.indexOf('\n') === -1 ? text.length : text.indexOf('\n'));
   const rows = parseCsvRows(text, detectDelimiter(firstLine));
-  if (rows.length < 2) return { runs: [], errors: ['CSV vide ou sans ligne de données'] };
+  if (rows.length < 2) return { runs: [], workouts: [], errors: ['CSV vide ou sans ligne de données'] };
 
   const headers = rows[0];
   const cols = {
@@ -328,7 +332,11 @@ function parseCsv(text: string): ParseResult {
   if (cols.distance < 0) missing.push('distance');
   if (cols.duration < 0) missing.push('durée');
   if (missing.length > 0) {
-    return { runs: [], errors: [`colonnes introuvables dans le CSV : ${missing.join(', ')}`] };
+    return {
+      runs: [],
+      workouts: [],
+      errors: [`colonnes introuvables dans le CSV : ${missing.join(', ')}`],
+    };
   }
 
   const runs: ParsedRun[] = [];
@@ -362,7 +370,74 @@ function parseCsv(text: string): ParseResult {
     });
   }
 
-  return { runs, errors };
+  return { runs, workouts: [], errors };
+}
+
+/* ---------- fichier de synchronisation produit par scripts/garmin-sync.mjs ---------- */
+
+function isFiniteNumber(value: unknown): value is number {
+  return typeof value === 'number' && Number.isFinite(value);
+}
+
+function parseSyncJson(content: string): ParseResult {
+  const data = JSON.parse(content) as Record<string, unknown>;
+  const errors: string[] = [];
+
+  const rawRuns = Array.isArray(data.runs) ? data.runs : [];
+  const rawWorkouts = Array.isArray(data.workouts) ? data.workouts : [];
+  if (rawRuns.length === 0 && rawWorkouts.length === 0) {
+    return { runs: [], workouts: [], errors: ['fichier de synchronisation vide'] };
+  }
+
+  const runs: ParsedRun[] = [];
+  rawRuns.forEach((entry, i) => {
+    const r = entry as Record<string, unknown>;
+    if (typeof r.date !== 'string' || !isFiniteNumber(r.distanceKm) || !isFiniteNumber(r.durationMin)) {
+      errors.push(`course ${i + 1} ignorée (champs manquants)`);
+      return;
+    }
+    runs.push({
+      externalId: typeof r.externalId === 'string' ? r.externalId : `sync:${r.date}:${r.distanceKm}`,
+      date: r.date,
+      distanceKm: r.distanceKm,
+      durationMin: r.durationMin,
+      avgHeartRate: isFiniteNumber(r.avgHeartRate) ? r.avgHeartRate : undefined,
+      notes: typeof r.notes === 'string' ? r.notes : undefined,
+    });
+  });
+
+  const workouts: ImportedWorkout[] = [];
+  rawWorkouts.forEach((entry, i) => {
+    const w = entry as Record<string, unknown>;
+    const exercises = Array.isArray(w.exercises) ? w.exercises : [];
+    if (typeof w.date !== 'string' || typeof w.externalId !== 'string' || exercises.length === 0) {
+      errors.push(`séance ${i + 1} ignorée (champs manquants)`);
+      return;
+    }
+    workouts.push({
+      externalId: w.externalId,
+      date: w.date,
+      startedAt: typeof w.startedAt === 'string' ? w.startedAt : `${w.date}T12:00:00.000Z`,
+      finishedAt: typeof w.finishedAt === 'string' ? w.finishedAt : `${w.date}T13:00:00.000Z`,
+      notes: typeof w.notes === 'string' ? w.notes : undefined,
+      exercises: exercises.map((raw) => {
+        const e = raw as Record<string, unknown>;
+        const sets = Array.isArray(e.sets) ? e.sets : [];
+        return {
+          name: typeof e.name === 'string' && e.name.trim() ? e.name : 'Exercice Garmin',
+          sets: sets.map((rawSet) => {
+            const s = rawSet as Record<string, unknown>;
+            return {
+              reps: isFiniteNumber(s.reps) ? s.reps : 0,
+              weightKg: isFiniteNumber(s.weightKg) ? s.weightKg : 0,
+            };
+          }),
+        };
+      }),
+    });
+  });
+
+  return { runs, workouts, errors };
 }
 
 /* ---------- point d'entrée ---------- */
@@ -370,12 +445,17 @@ function parseCsv(text: string): ParseResult {
 export function parseGarminFile(fileName: string, content: string): ParseResult {
   const extension = fileName.toLowerCase().split('.').pop();
   try {
+    if (extension === 'json') return parseSyncJson(content);
     if (extension === 'csv') return parseCsv(content);
-    if (extension === 'tcx') return { runs: parseTcx(content), errors: [] };
-    if (extension === 'gpx') return { runs: parseGpx(content), errors: [] };
-    return { runs: [], errors: [`${fileName} : format non reconnu (attendu .tcx, .gpx ou .csv)`] };
+    if (extension === 'tcx') return { runs: parseTcx(content), workouts: [], errors: [] };
+    if (extension === 'gpx') return { runs: parseGpx(content), workouts: [], errors: [] };
+    return {
+      runs: [],
+      workouts: [],
+      errors: [`${fileName} : format non reconnu (attendu .tcx, .gpx, .csv ou .json)`],
+    };
   } catch (e) {
     const message = e instanceof Error ? e.message : 'erreur inconnue';
-    return { runs: [], errors: [`${fileName} : ${message}`] };
+    return { runs: [], workouts: [], errors: [`${fileName} : ${message}`] };
   }
 }

@@ -119,7 +119,8 @@ export default function HistoryPage() {
                   <span className="min-w-0 flex-1">
                     <span className="block font-bold text-sm">{formatDate(w.date)}</span>
                     <span className="block text-xs text-slate-500 mt-0.5 tabular-nums">
-                      {w.exercises.length} exercices · {totalSets} séries ·{' '}
+                      {w.exercises.length} exercice{w.exercises.length > 1 ? 's' : ''} ·{' '}
+                      {totalSets} série{totalSets > 1 ? 's' : ''} ·{' '}
                       {formatDuration(w.startedAt, w.finishedAt)}
                     </span>
                   </span>

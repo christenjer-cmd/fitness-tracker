@@ -1,10 +1,27 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { Exercise, RunSession, SetEntry, WorkoutExercise, WorkoutSession } from '../types';
+import type {
+  Exercise,
+  ImportedWorkout,
+  RunSession,
+  SetEntry,
+  WorkoutExercise,
+  WorkoutSession,
+} from '../types';
 import { EXERCISES } from '../data/exercises';
 
 function uid() {
   return crypto.randomUUID();
+}
+
+/** Rapproche « Développé couché barre » et « developpe couche barre ». */
+function normaliseName(name: string): string {
+  return name
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/\s+/g, ' ');
 }
 
 interface StoreState {
@@ -36,6 +53,9 @@ interface StoreState {
   setExerciseNotes: (workoutId: string, workoutExerciseId: string, notes: string) => void;
   updateSet: (workoutId: string, workoutExerciseId: string, setId: string, patch: Partial<SetEntry>) => void;
   removeSet: (workoutId: string, workoutExerciseId: string, setId: string) => void;
+
+  /** Importe des séances Garmin, en ignorant celles déjà connues. Renvoie le nombre ajouté. */
+  addWorkouts: (workouts: ImportedWorkout[]) => number;
 
   // Historique / réutilisation
   lastPerformance: (exerciseId: string) => { date: string; sets: SetEntry[] } | undefined;
@@ -180,6 +200,61 @@ export const useStore = create<StoreState>()(
             };
           }),
         }));
+      },
+
+      addWorkouts: (incoming) => {
+        const known = new Set(get().workouts.map((w) => w.externalId).filter(Boolean));
+        const fresh = incoming.filter((w) => !known.has(w.externalId));
+        if (fresh.length === 0) return 0;
+
+        // Les exercices absents du catalogue sont créés au passage, une seule
+        // fois même s'ils reviennent dans plusieurs séances importées.
+        const createdExercises: Exercise[] = [];
+        const byName = new Map<string, string>();
+        for (const ex of get().allExercises()) byName.set(normaliseName(ex.name), ex.id);
+
+        const resolveExerciseId = (name: string): string => {
+          const key = normaliseName(name);
+          const existing = byName.get(key);
+          if (existing) return existing;
+          const created: Exercise = {
+            id: uid(),
+            name: name.trim(),
+            muscleGroups: ['corps-entier'],
+            equipment: 'autre',
+            isCustom: true,
+          };
+          createdExercises.push(created);
+          byName.set(key, created.id);
+          return created.id;
+        };
+
+        const sessions: WorkoutSession[] = fresh.map((w) => ({
+          id: uid(),
+          date: w.date,
+          startedAt: w.startedAt,
+          finishedAt: w.finishedAt,
+          notes: w.notes,
+          externalId: w.externalId,
+          exercises: w.exercises.map((e) => ({
+            id: uid(),
+            exerciseId: resolveExerciseId(e.name),
+            sets: e.sets.map((s) => ({
+              id: uid(),
+              reps: s.reps,
+              weightKg: s.weightKg,
+              completed: true,
+            })),
+          })),
+        }));
+
+        set((state) => ({
+          customExercises: [...state.customExercises, ...createdExercises],
+          workouts: [...sessions, ...state.workouts].sort((a, b) =>
+            a.startedAt < b.startedAt ? 1 : -1
+          ),
+        }));
+        return sessions.length;
       },
 
       lastPerformance: (exerciseId) => {

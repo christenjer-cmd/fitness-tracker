@@ -48,14 +48,38 @@ d'un sous-domaine, donc `BASE_PATH` reste inutile.
 
 ## Import Garmin
 
-L'onglet Course accepte trois formats exportés par Garmin Connect :
+L'onglet Course accepte quatre formats :
 
-- `.tcx` et `.gpx` pour une activité isolée (bouton d'export sur la page de l'activité)
+- `.tcx` et `.gpx` pour une activité isolée, exportée depuis sa page sur Garmin Connect
 - `.csv` pour un export en masse depuis la liste des activités
+- `.json` produit par le script de synchronisation décrit ci-dessous
 
-Les courses déjà importées sont détectées par leur identifiant d'origine
-(`externalId`) et ne sont pas ajoutées deux fois. Le format `.FIT` natif de Garmin
-n'est pas géré : il est binaire et demanderait une dépendance supplémentaire.
+Les activités déjà importées sont reconnues par leur identifiant d'origine
+(`externalId`) et ne sont jamais ajoutées deux fois. Le format `.FIT` natif de
+Garmin n'est pas géré côté app : il est binaire, et le script de synchronisation
+rend sa lecture inutile.
+
+## Script de synchronisation Garmin
+
+`scripts/garmin-sync.mjs` se connecte à Garmin Connect, récupère les dernières
+activités et écrit un fichier JSON à importer dans l'app. Contrairement aux
+exports manuels, il rapatrie aussi les **séances de musculation avec leurs
+séries, répétitions et charges**, que les formats TCX et CSV ne contiennent pas.
+
+Les identifiants restent sur la machine : ils sont lus dans les variables
+d'environnement `GARMIN_EMAIL` et `GARMIN_PASSWORD`, ou dans un fichier
+`garmin.local.json` à la racine, ignoré par git au même titre que le jeton de
+session mis en cache dans `.garmin-tokens/`.
+
+```bash
+node scripts/garmin-sync.mjs --limit 30
+```
+
+Options : `--limit` nombre d'activités à examiner, `--days` pour ne garder que
+les N derniers jours, `--out` pour choisir le fichier de sortie.
+
+Les exercices sont rapprochés du catalogue par leur nom ; ceux que Garmin nomme
+autrement sont créés comme exercices personnalisés à l'import.
 
 ## Sauvegarde
 

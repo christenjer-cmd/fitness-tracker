@@ -52,6 +52,18 @@ export interface WorkoutSession {
   finishedAt?: string;
   exercises: WorkoutExercise[];
   notes?: string;
+  /** Identifiant de l'activité Garmin d'origine, pour éviter les doublons. */
+  externalId?: string;
+}
+
+/** Séance de musculation venant d'un fichier de synchronisation Garmin. */
+export interface ImportedWorkout {
+  externalId: string;
+  date: string;
+  startedAt: string;
+  finishedAt: string;
+  notes?: string;
+  exercises: { name: string; sets: { reps: number; weightKg: number }[] }[];
 }
 
 export interface RunSession {
