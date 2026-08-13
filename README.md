@@ -17,10 +17,27 @@ sur l'écran d'accueil, il faut passer par un hébergement.
 
 ## Déployer
 
-Le dépôt contient déjà la configuration pour Netlify (`netlify.toml`) et Vercel
-(`vercel.json`), avec la règle de réécriture indispensable au routage côté client.
-Il suffit de connecter le dépôt à l'un des deux, la commande de build et le dossier
-de sortie sont détectés automatiquement.
+Trois options sont configurées, aucune n'est obligatoire, elles font toutes du HTTPS
+(indispensable pour installer la PWA sur iOS).
+
+### GitHub Pages
+
+Un workflow (`.github/workflows/deploy.yml`) construit et publie à chaque push sur
+`master` ou `main`. Il faut l'activer une fois dans le dépôt, sous
+`Settings > Pages`, en choisissant la source `GitHub Actions`.
+
+Le site est alors servi depuis `https://<utilisateur>.github.io/<depot>/` et non
+depuis la racine du domaine, ce qui demande deux précautions déjà en place :
+le workflow passe `BASE_PATH` à Vite pour préfixer les chemins des ressources,
+et le build copie `index.html` en `404.html`, seule façon pour GitHub Pages de
+servir l'application sur une URL profonde comme `/historique`.
+
+### Netlify ou Vercel
+
+`netlify.toml` et `vercel.json` contiennent la règle de réécriture équivalente.
+Il suffit de connecter le dépôt, la commande de build et le dossier de sortie
+sont détectés automatiquement. Ces deux plateformes servent depuis la racine
+d'un sous-domaine, donc `BASE_PATH` reste inutile.
 
 ## Scripts
 
