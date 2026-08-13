@@ -3,6 +3,7 @@ import { useStore } from '../store/useStore';
 import ExercisePicker from '../components/ExercisePicker';
 import RestTimer from '../components/RestTimer';
 import { CheckIcon, CloseIcon, DumbbellIcon, PlusIcon } from '../components/icons';
+import { LiftIllustration } from '../components/illustrations';
 import { formatDate, formatDuration } from '../utils';
 
 export default function WorkoutPage() {
@@ -39,12 +40,10 @@ export default function WorkoutPage() {
     const lastFinished = workouts.filter((w) => w.finishedAt).slice(0, 3);
     return (
       <div className="animate-fade-in">
-        <div className="card p-8 flex flex-col items-center text-center mt-6">
-          <span className="w-16 h-16 rounded-2xl bg-accent/10 border border-accent/20 grid place-items-center mb-4">
-            <DumbbellIcon className="w-8 h-8 text-accent" />
-          </span>
-          <h2 className="text-lg font-bold">Prêt à soulever ?</h2>
-          <p className="text-sm text-slate-400 mt-1 mb-6">Aucune séance en cours.</p>
+        <div className="card-glow p-6 flex flex-col items-center text-center">
+          <LiftIllustration className="w-full max-w-[15rem] h-auto" />
+          <h2 className="text-xl font-bold tracking-tight mt-1">Prêt à soulever ?</h2>
+          <p className="text-sm text-slate-500 mt-1 mb-6">Aucune séance en cours.</p>
           <button onClick={() => startWorkout()} className="btn-primary w-full py-3.5">
             Démarrer une séance
           </button>
@@ -93,7 +92,7 @@ export default function WorkoutPage() {
 
   return (
     <div className="space-y-4 animate-fade-in">
-      <div className="card p-4">
+      <div className="card-glow p-4">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="flex items-center gap-2">
@@ -118,9 +117,9 @@ export default function WorkoutPage() {
             { label: 'Séries', value: `${doneSets}/${totalSets}` },
             { label: 'Volume', value: `${Math.round(volume)} kg` },
           ].map((stat) => (
-            <div key={stat.label} className="bg-surface-sunken rounded-xl px-3 py-2.5">
+            <div key={stat.label} className="bg-black/25 border border-white/[0.06] rounded-xl px-3 py-2.5">
               <p className="label-micro">{stat.label}</p>
-              <p className="text-base font-bold tabular-nums mt-0.5">{stat.value}</p>
+              <p className="text-base font-bold tabular-nums mt-0.5 text-gradient">{stat.value}</p>
             </div>
           ))}
         </div>

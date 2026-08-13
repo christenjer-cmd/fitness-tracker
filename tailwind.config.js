@@ -19,7 +19,12 @@ export default {
           DEFAULT: '#22C55E',
           light: '#4ADE80',
           dark: '#16A34A',
-          ink: '#052E16',
+          ink: '#04210F',
+        },
+        // Seconde teinte du dégradé : c'est le cyan qui donne l'aspect futuriste.
+        cyan: {
+          DEFAULT: '#22D3EE',
+          soft: '#67E8F9',
         },
       },
       fontFamily: {
@@ -56,12 +61,29 @@ export default {
           '0%, 100%': { opacity: '0.6' },
           '50%': { opacity: '1' },
         },
+        // Lente dérive des halos de fond, façon aurore.
+        aurora: {
+          '0%, 100%': { transform: 'translate3d(-4%, 0, 0) scale(1)' },
+          '50%': { transform: 'translate3d(4%, -2%, 0) scale(1.12)' },
+        },
+        'sweep': {
+          '0%': { transform: 'translateX(-120%)' },
+          '100%': { transform: 'translateX(220%)' },
+        },
+        'draw': {
+          from: { strokeDashoffset: 'var(--dash)' },
+          to: { strokeDashoffset: '0' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.25s ease-out both',
         'fade-in': 'fade-in 0.25s ease-out both',
         'scale-in': 'scale-in 0.18s ease-out both',
         'pulse-ring': 'pulse-ring 1.6s ease-in-out infinite',
+        aurora: 'aurora 18s ease-in-out infinite',
+        'aurora-slow': 'aurora 26s ease-in-out infinite reverse',
+        sweep: 'sweep 2.4s ease-in-out infinite',
+        draw: 'draw 1.2s ease-out both',
       },
     },
   },

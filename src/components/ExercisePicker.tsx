@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useStore } from '../store/useStore';
 import { EQUIPMENT_LABELS, MUSCLE_GROUP_LABELS } from '../data/exercises';
 import { CloseIcon, PlusIcon, SearchIcon } from './icons';
@@ -34,7 +35,9 @@ export default function ExercisePicker({ onSelect, onClose }: Props) {
     ...(Object.keys(MUSCLE_GROUP_LABELS) as MuscleGroup[]),
   ];
 
-  return (
+  // Rendu hors de l'arbre de la page : une animation d'opacité sur un conteneur
+  // parent crée un contexte d'empilement qui piégeait ce panneau sous l'en-tête.
+  return createPortal(
     <div className="fixed inset-0 bg-ink/95 backdrop-blur-md z-40 flex flex-col animate-fade-in">
       <div className="w-full max-w-md mx-auto flex flex-col h-full">
         <div className="px-4 pt-4 pb-3 flex items-center gap-2">
@@ -168,6 +171,7 @@ export default function ExercisePicker({ onSelect, onClose }: Props) {
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

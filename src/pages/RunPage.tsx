@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useStore } from '../store/useStore';
 import GarminImport from '../components/GarminImport';
 import { RunIcon, TrashIcon } from '../components/icons';
+import { RunIllustration } from '../components/illustrations';
 import { formatDate } from '../utils';
 
 export default function RunPage() {
@@ -132,8 +133,9 @@ export default function RunPage() {
         </div>
 
         {runs.length === 0 && (
-          <div className="card p-8 text-center">
-            <p className="text-slate-500 text-sm">Aucune course enregistrée.</p>
+          <div className="card p-6 flex flex-col items-center text-center">
+            <RunIllustration className="w-full max-w-[13rem] h-auto" />
+            <p className="text-slate-500 text-sm mt-1">Aucune course enregistrée.</p>
           </div>
         )}
 

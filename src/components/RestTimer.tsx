@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useStore } from '../store/useStore';
 import { CloseIcon, TimerIcon } from './icons';
 
@@ -81,7 +82,9 @@ export default function RestTimer({ exerciseId, startedAt, onDismiss }: Props) {
   const radius = 15;
   const circumference = 2 * Math.PI * radius;
 
-  return (
+  // Même raison que le sélecteur d'exercices : on sort de l'arbre de la page
+  // pour ne dépendre d'aucun contexte d'empilement parent.
+  return createPortal(
     <div className="fixed bottom-[4.6rem] left-0 right-0 z-30 px-4 pb-[env(safe-area-inset-bottom)]">
       <div
         className={`max-w-md mx-auto rounded-2xl border backdrop-blur-xl shadow-card animate-scale-in ${
@@ -151,6 +154,7 @@ export default function RestTimer({ exerciseId, startedAt, onDismiss }: Props) {
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

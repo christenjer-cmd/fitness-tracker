@@ -25,11 +25,13 @@ export function DumbbellIcon({ className }: IconProps) {
   );
 }
 
+// Une chaussure plutôt qu'un coureur : à 24 pixels, une silhouette humaine
+// se réduit à des traits épars et devient illisible.
 export function RunIcon({ className }: IconProps) {
   return (
     <svg {...base} className={className} aria-hidden="true">
-      <circle cx="15.5" cy="4.5" r="1.8" />
-      <path d="M13.8 9.2 10 11.5l2.4 2.8.8 5.2M12.4 14.3 8.6 19.5M13.8 9.2l3.4-1.1 2.3 3.3 2.2.7M10 11.5 7 10.4l-2.6 1.4" />
+      <path d="M3 16.5h13.5c2 0 3.2-.6 4.5-1.7.6-.5.5-1.4-.2-1.7l-6-2.6a3 3 0 0 1-1.3-1.1L12 7l-2.2 1.6a3 3 0 0 1-3.3.1L4.6 7.6a1 1 0 0 0-1.6.8z" />
+      <path d="M3 16.5V19h18v-2.5" />
     </svg>
   );
 }

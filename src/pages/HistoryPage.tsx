@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { useStore } from '../store/useStore';
-import { CalendarIcon, ChevronIcon, DumbbellIcon, TrashIcon } from '../components/icons';
+import { ChevronIcon, DumbbellIcon, TrashIcon } from '../components/icons';
+import { ProgressIllustration } from '../components/illustrations';
 import { formatDate, formatDuration } from '../utils';
 
 export default function HistoryPage() {
@@ -98,9 +99,9 @@ export default function HistoryPage() {
       {tab === 'seances' && (
         <div className="space-y-2">
           {workouts.length === 0 && (
-            <div className="card p-8 text-center">
-              <CalendarIcon className="w-8 h-8 text-slate-700 mx-auto mb-3" />
-              <p className="text-slate-500 text-sm">Aucune séance terminée pour l'instant.</p>
+            <div className="card p-6 flex flex-col items-center text-center">
+              <ProgressIllustration className="w-full max-w-[13rem] h-auto" />
+              <p className="text-slate-500 text-sm mt-1">Aucune séance terminée pour l'instant.</p>
             </div>
           )}
           {workouts.map((w) => {
