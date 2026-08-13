@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { GarminConnect } from 'garmin-connect';
 
@@ -25,13 +26,18 @@ const CREDENTIALS_FILE = path.join(projectRoot, 'garmin.local.json');
 /* ---------- arguments ---------- */
 
 function parseArgs(argv) {
-  const args = { limit: 30, out: path.join(projectRoot, 'garmin-export.json'), days: 0 };
+  const args = { limit: 30, out: path.join(projectRoot, 'garmin-export.json'), days: 0, publish: false };
   for (let i = 0; i < argv.length; i++) {
     const next = () => argv[++i];
     if (argv[i] === '--limit') args.limit = Number(next());
     else if (argv[i] === '--out') args.out = path.resolve(process.cwd(), next());
     else if (argv[i] === '--days') args.days = Number(next());
+    else if (argv[i] === '--publish') args.publish = true;
     else if (argv[i] === '--help') args.help = true;
+  }
+  // En mode publication, le fichier va dans public/ pour être servi par le site.
+  if (args.publish && !argv.includes('--out')) {
+    args.out = path.join(projectRoot, 'public', 'garmin-data.json');
   }
   return args;
 }
@@ -173,12 +179,45 @@ export function toWorkout(activity, exerciseSets) {
   };
 }
 
+/* ---------- publication vers GitHub ---------- */
+
+// Dépose le fichier sur le dépôt : GitHub reconstruit le site, et l'app va
+// ensuite lire les données toute seule à son ouverture.
+function publishToGitHub(filePath) {
+  const git = (...gitArgs) =>
+    execFileSync('git', gitArgs, { cwd: projectRoot, encoding: 'utf8', stdio: 'pipe' });
+
+  const relative = path.relative(projectRoot, filePath).split(path.sep).join('/');
+
+  const pending = git('status', '--porcelain', '--', relative).trim();
+  if (!pending) {
+    console.log('Aucun changement à publier, les données en ligne sont déjà à jour.');
+    return;
+  }
+
+  console.log('Publication sur GitHub...');
+  git('add', '--', relative);
+  git('commit', '-m', `Données Garmin du ${new Date().toISOString().slice(0, 10)}`);
+  git('push', 'origin', 'HEAD');
+  console.log('Publié. Le site se reconstruit, compte une à deux minutes.');
+  console.log("Ouvre ensuite l'app sur ton téléphone, les activités arriveront seules.");
+}
+
 /* ---------- programme principal ---------- */
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help) {
-    console.log('node scripts/garmin-sync.mjs [--limit 30] [--days 0] [--out fichier.json]');
+    console.log(
+      [
+        'node scripts/garmin-sync.mjs [options]',
+        '',
+        '  --publish       dépose les données sur GitHub, pour que l\'app les récupère seule',
+        '  --limit <n>     nombre d\'activités à examiner (30 par défaut)',
+        '  --days <n>      ne garder que les n derniers jours',
+        '  --out <fichier> chemin du fichier de sortie',
+      ].join('\n')
+    );
     return;
   }
 
@@ -254,6 +293,7 @@ async function main() {
     workouts,
   };
 
+  fs.mkdirSync(path.dirname(args.out), { recursive: true });
   fs.writeFileSync(args.out, JSON.stringify(payload, null, 2), 'utf8');
 
   console.log('');
@@ -265,7 +305,13 @@ async function main() {
   }
   console.log('');
   console.log(`Fichier écrit : ${args.out}`);
-  console.log("Importe-le dans l'app, onglet Course, bloc « Importer depuis Garmin ».");
+
+  if (args.publish) {
+    publishToGitHub(args.out);
+  } else {
+    console.log("Importe-le dans l'app, onglet Course, bloc « Importer depuis Garmin ».");
+    console.log('Ou relance avec --publish pour que l\'app les reçoive toute seule.');
+  }
 }
 
 // N'exécute la synchronisation que si le fichier est lancé directement,

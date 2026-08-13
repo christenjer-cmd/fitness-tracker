@@ -3,6 +3,7 @@ import WorkoutPage from './pages/WorkoutPage';
 import HistoryPage from './pages/HistoryPage';
 import RunPage from './pages/RunPage';
 import Backdrop from './components/Backdrop';
+import GarminAutoSync from './components/GarminAutoSync';
 import { CalendarIcon, DumbbellIcon, RunIcon } from './components/icons';
 
 const tabs = [
@@ -31,6 +32,7 @@ export default function App() {
       </header>
 
       <main className="flex-1 w-full max-w-md mx-auto px-4 pt-5 pb-32">
+        <GarminAutoSync />
         <Routes>
           <Route path="/" element={<WorkoutPage />} />
           <Route path="/course" element={<RunPage />} />

@@ -78,6 +78,27 @@ node scripts/garmin-sync.mjs --limit 30
 Options : `--limit` nombre d'activités à examiner, `--days` pour ne garder que
 les N derniers jours, `--out` pour choisir le fichier de sortie.
 
+### Récupération automatique par l'app
+
+Avec `--publish`, le script écrit dans `public/garmin-data.json` puis pousse sur
+le dépôt. GitHub reconstruit le site, et l'app lit ce fichier à chaque ouverture
+pour ajouter les activités qu'elle ne connaît pas encore. Plus aucun fichier à
+transférer vers le téléphone.
+
+```bash
+node scripts/garmin-sync.mjs --publish
+```
+
+L'opération est idempotente : l'ajout se fait par identifiant d'origine, donc
+relire le même fichier ne crée jamais de doublon, et la bannière de confirmation
+n'apparaît que lorsque quelque chose a réellement été ajouté.
+
+**Ce fichier est public.** Le dépôt doit l'être pour que GitHub Pages fonctionne
+gratuitement, donc les données publiées sont lisibles par qui connaît l'adresse.
+Elles ne contiennent ni nom, ni trace GPS, uniquement des distances, durées,
+fréquences cardiaques et charges. Pour l'éviter, il suffit de ne pas utiliser
+`--publish` et de continuer à importer le fichier à la main.
+
 Les exercices sont rapprochés du catalogue par leur nom ; ceux que Garmin nomme
 autrement sont créés comme exercices personnalisés à l'import.
 
