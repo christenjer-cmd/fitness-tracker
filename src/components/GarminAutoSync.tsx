@@ -33,9 +33,10 @@ export default function GarminAutoSync() {
             date: r.date,
             distanceKm: r.distanceKm,
             durationMin: r.durationMin,
-            avgPaceMinPerKm: r.durationMin / r.distanceKm,
+            avgPaceMinPerKm: r.distanceKm > 0 ? r.durationMin / r.distanceKm : undefined,
             avgHeartRate: r.avgHeartRate,
             notes: r.notes,
+            sport: r.sport,
             source: 'garmin' as const,
             externalId: r.externalId,
           }))
@@ -46,7 +47,7 @@ export default function GarminAutoSync() {
 
         const parts: string[] = [];
         if (addedWorkouts > 0) parts.push(`${addedWorkouts} séance${addedWorkouts > 1 ? 's' : ''}`);
-        if (addedRuns > 0) parts.push(`${addedRuns} course${addedRuns > 1 ? 's' : ''}`);
+        if (addedRuns > 0) parts.push(`${addedRuns} activité${addedRuns > 1 ? 's' : ''}`);
         setSummary(`${parts.join(' et ')} récupérée${addedRuns + addedWorkouts > 1 ? 's' : ''}`);
       } catch {
         // Hors ligne ou fichier illisible : on reste silencieux, l'app fonctionne

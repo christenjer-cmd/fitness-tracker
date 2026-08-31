@@ -10,6 +10,9 @@ import type {
 } from '../types';
 import { EXERCISES } from '../data/exercises';
 
+/** Libellés Garmin qui relèvent du cardio plutôt que de la course. */
+const CARDIO_LABEL = /marche|walk|hike|rando|tapis|treadmill|escalier|stair|ellipt/i;
+
 function uid() {
   return crypto.randomUUID();
 }
@@ -303,6 +306,22 @@ export const useStore = create<StoreState>()(
         set((state) => ({ runs: state.runs.filter((r) => r.id !== runId) }));
       },
     }),
-    { name: 'fitness-tracker-storage' }
+    {
+      name: 'fitness-tracker-storage',
+      version: 1,
+      // Les activités enregistrées avant la séparation n'ont pas de champ sport.
+      // Le libellé venu de Garmin permet de le deviner.
+      migrate: (persisted, fromVersion) => {
+        const state = persisted as { runs?: RunSession[] };
+        if (fromVersion < 1 && Array.isArray(state?.runs)) {
+          state.runs = state.runs.map((r) =>
+            r.sport
+              ? r
+              : { ...r, sport: CARDIO_LABEL.test(r.notes ?? '') ? 'cardio' : 'course' }
+          );
+        }
+        return state;
+      },
+    }
   )
 );

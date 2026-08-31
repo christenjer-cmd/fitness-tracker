@@ -43,12 +43,24 @@ d'un sous-domaine, donc `BASE_PATH` reste inutile.
 
 - `npm run dev` : serveur de développement
 - `npm run build` : vérification TypeScript puis build de production dans `dist/`
-- `npm run lint` : vérification TypeScript seule
+- `npm run lint` : vérification TypeScript seule (`tsc -b`, le tsconfig racine
+  ne contenant aucun fichier, `tsc --noEmit` ne vérifierait rien)
 - `npm run preview` : sert le build de production
+
+## Les onglets
+
+- **Séance** : musculation, avec séries, charges, RPE et minuteur de repos
+- **Course** : uniquement la course à pied
+- **Cardio** : le reste, marche, marche inclinée, tapis, escaliers, elliptique
+- **Historique** : séances terminées, progression, import Garmin et sauvegarde
+
+La séparation course / cardio vient du type d'activité renvoyé par Garmin. Les
+activités enregistrées avant cette séparation sont reclassées automatiquement
+d'après leur libellé, au premier lancement.
 
 ## Import Garmin
 
-L'onglet Course accepte quatre formats :
+L'onglet Historique accepte trois formats :
 
 - `.tcx` et `.gpx` pour une activité isolée, exportée depuis sa page sur Garmin Connect
 - `.csv` pour un export en masse depuis la liste des activités

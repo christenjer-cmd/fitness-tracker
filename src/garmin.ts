@@ -1,11 +1,12 @@
 // Import des courses depuis Garmin Connect.
 // Formats acceptés : .tcx et .gpx (export d'une activité), .csv (export de la liste d'activités).
 
-import type { ImportedWorkout } from './types';
+import type { ImportedWorkout, RunSport } from './types';
 
 export interface ParsedRun {
   externalId: string;
   date: string;
+  sport: RunSport;
   distanceKm: number;
   durationMin: number;
   avgHeartRate?: number;
@@ -147,6 +148,7 @@ function parseTcx(text: string): ParsedRun[] {
     runs.push({
       externalId: `tcx:${id ?? `${meters}-${seconds}`}`,
       date: startedAt && !Number.isNaN(startedAt.getTime()) ? toLocalDate(startedAt) : toLocalDate(new Date()),
+      sport: inferSport(sport),
       distanceKm: round(meters / 1000, 2),
       durationMin: round(seconds / 60, 1),
       avgHeartRate: hrSeconds > 0 ? Math.round(hrWeighted / hrSeconds) : undefined,
@@ -220,6 +222,7 @@ function parseGpx(text: string): ParsedRun[] {
     runs.push({
       externalId: `gpx:${firstTime.toISOString()}`,
       date: toLocalDate(firstTime),
+      sport: inferSport(name),
       distanceKm: round(km, 2),
       durationMin: round(minutes, 1),
       avgHeartRate: hrCount > 0 ? Math.round(hrSum / hrCount) : undefined,
@@ -363,6 +366,7 @@ function parseCsv(text: string): ParseResult {
     runs.push({
       externalId: `csv:${date}:${distance}:${duration}`,
       date,
+      sport: inferSport(type, title),
       distanceKm: round(normaliseDistanceKm(distance), 2),
       durationMin: round(duration, 1),
       avgHeartRate: parseNumber(cell(cols.heartRate)) || undefined,
@@ -374,6 +378,17 @@ function parseCsv(text: string): ParseResult {
 }
 
 /* ---------- fichier de synchronisation produit par scripts/garmin-sync.mjs ---------- */
+
+// Garmin ne distingue pas toujours explicitement : le libellé de l'activité
+// reste le signal le plus fiable pour séparer la course du reste.
+const CARDIO_HINTS = /marche|walk|hike|rando|nordic|tapis|treadmill|escalier|stair|ellipt|velo|vélo|bike|cycl/;
+
+function inferSport(...hints: (string | undefined)[]): RunSport {
+  const text = hints.filter(Boolean).join(' ').toLowerCase();
+  // « treadmill running » reste de la course : la mention de course prime.
+  if (/course|running|run|jogging|trail/.test(text) && !/marche|walk/.test(text)) return 'course';
+  return CARDIO_HINTS.test(text) ? 'cardio' : 'course';
+}
 
 function isFiniteNumber(value: unknown): value is number {
   return typeof value === 'number' && Number.isFinite(value);
@@ -399,6 +414,10 @@ function parseSyncJson(content: string): ParseResult {
     runs.push({
       externalId: typeof r.externalId === 'string' ? r.externalId : `sync:${r.date}:${r.distanceKm}`,
       date: r.date,
+      sport:
+        r.sport === 'cardio' || r.sport === 'course'
+          ? r.sport
+          : inferSport(typeof r.notes === 'string' ? r.notes : undefined),
       distanceKm: r.distanceKm,
       durationMin: r.durationMin,
       avgHeartRate: isFiniteNumber(r.avgHeartRate) ? r.avgHeartRate : undefined,

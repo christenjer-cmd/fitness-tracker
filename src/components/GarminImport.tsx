@@ -96,9 +96,10 @@ export default function GarminImport() {
         date: c.date,
         distanceKm: c.distanceKm,
         durationMin: c.durationMin,
-        avgPaceMinPerKm: c.durationMin / c.distanceKm,
+        avgPaceMinPerKm: c.distanceKm > 0 ? c.durationMin / c.distanceKm : undefined,
         avgHeartRate: c.avgHeartRate,
         notes: c.notes,
+        sport: c.sport,
         source: 'garmin' as const,
         externalId: c.externalId,
       }))

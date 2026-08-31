@@ -66,6 +66,9 @@ export interface ImportedWorkout {
   exercises: { name: string; sets: { reps: number; weightKg: number }[] }[];
 }
 
+/** 'cardio' regroupe marche, marche inclinée, tapis, escaliers, elliptique. */
+export type RunSport = 'course' | 'cardio';
+
 export interface RunSession {
   id: string;
   date: string;
@@ -75,6 +78,8 @@ export interface RunSession {
   avgHeartRate?: number;
   notes?: string;
   source: 'manuel' | 'garmin';
+  /** Sépare la course du reste : les allures ne se comparent pas. */
+  sport: RunSport;
   /** Identifiant de l'activité d'origine, pour ne pas réimporter deux fois le même fichier. */
   externalId?: string;
 }

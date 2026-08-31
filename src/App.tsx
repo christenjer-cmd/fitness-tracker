@@ -1,14 +1,15 @@
 import { NavLink, Route, Routes } from 'react-router-dom';
 import WorkoutPage from './pages/WorkoutPage';
 import HistoryPage from './pages/HistoryPage';
-import RunPage from './pages/RunPage';
+import ActivityPage from './pages/ActivityPage';
 import Backdrop from './components/Backdrop';
 import GarminAutoSync from './components/GarminAutoSync';
-import { CalendarIcon, DumbbellIcon, RunIcon } from './components/icons';
+import { CalendarIcon, CardioIcon, DumbbellIcon, RunIcon } from './components/icons';
 
 const tabs = [
   { to: '/', label: 'Séance', Icon: DumbbellIcon },
   { to: '/course', label: 'Course', Icon: RunIcon },
+  { to: '/cardio', label: 'Cardio', Icon: CardioIcon },
   { to: '/historique', label: 'Historique', Icon: CalendarIcon },
 ];
 
@@ -35,20 +36,21 @@ export default function App() {
         <GarminAutoSync />
         <Routes>
           <Route path="/" element={<WorkoutPage />} />
-          <Route path="/course" element={<RunPage />} />
+          <Route path="/course" element={<ActivityPage sport="course" />} />
+          <Route path="/cardio" element={<ActivityPage sport="cardio" />} />
           <Route path="/historique" element={<HistoryPage />} />
         </Routes>
       </main>
 
       {/* Barre flottante, détachée du bord : plus aérien qu'un bandeau collé. */}
       <nav className="fixed bottom-0 left-0 right-0 z-20 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pointer-events-none">
-        <div className="max-w-md mx-auto flex justify-around gap-1 rounded-2xl border border-white/[0.08] bg-ink/80 backdrop-blur-xl p-1.5 shadow-nav pointer-events-auto">
+        <div className="max-w-md mx-auto flex justify-around gap-0.5 rounded-2xl border border-white/[0.08] bg-ink/80 backdrop-blur-xl p-1.5 shadow-nav pointer-events-auto">
           {tabs.map(({ to, label, Icon }) => (
             <NavLink
               key={to}
               to={to}
               className={({ isActive }) =>
-                `relative flex-1 flex flex-col items-center gap-1 py-2 rounded-xl transition ${
+                `relative flex-1 min-w-0 flex flex-col items-center gap-1 py-2 rounded-xl transition ${
                   isActive ? 'text-accent' : 'text-slate-500 active:text-slate-300'
                 }`
               }

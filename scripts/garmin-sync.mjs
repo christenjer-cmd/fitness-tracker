@@ -91,7 +91,10 @@ function readCredentials() {
 
 /* ---------- classement des activités ---------- */
 
-const RUN_TYPES = /^(running|trail_running|treadmill_running|track_running|virtual_run|indoor_running|walking|hiking)$/;
+// Tout ce qui se mesure en distance ou en durée, hors musculation.
+const RUN_TYPES = /^(running|trail_running|treadmill_running|track_running|virtual_run|indoor_running|walking|hiking|casual_walking|speed_walking|indoor_walking|elliptical|stair_climbing|indoor_cardio|cycling|indoor_cycling|virtual_ride)$/;
+// Le cardio se compte à part : allure et ressenti n'ont rien à voir avec la course.
+const CARDIO_TYPES = /^(walking|hiking|casual_walking|speed_walking|indoor_walking|elliptical|stair_climbing|indoor_cardio|cycling|indoor_cycling|virtual_ride)$/;
 const STRENGTH_TYPES = /^(strength_training|indoor_cardio|fitness_equipment|pilates|yoga)$/;
 
 // Garmin nomme les exercices en majuscules techniques : on rend ça lisible.
@@ -152,10 +155,16 @@ function round(value, decimals) {
 export function toRun(activity) {
   const distanceKm = (activity.distance ?? 0) / 1000;
   const durationMin = (activity.duration ?? 0) / 60;
-  if (distanceKm <= 0 || durationMin <= 0) return null;
+  const typeKey = activity.activityType?.typeKey ?? '';
+  const sport = CARDIO_TYPES.test(typeKey) ? 'cardio' : 'course';
+  // Un escalier ou un vélo d'appartement ne produit pas toujours de distance :
+  // en cardio, la durée suffit. Une course sans distance reste inexploitable.
+  if (durationMin <= 0) return null;
+  if (sport === 'course' && distanceKm <= 0) return null;
   return {
     externalId: `garmin:${activity.activityId}`,
     date: localDate(activity.startTimeLocal),
+    sport,
     distanceKm: round(distanceKm, 2),
     durationMin: round(durationMin, 1),
     avgHeartRate: activity.averageHR ? Math.round(activity.averageHR) : undefined,

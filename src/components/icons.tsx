@@ -121,3 +121,16 @@ export function TimerIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+// Cardio : un cœur avec son tracé. Lisible à 24 pixels, là où une paire
+// d'empreintes de pas devient une tache.
+export function CardioIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M20.4 8.6a4.3 4.3 0 0 0-7.4-2.5l-1 1-1-1a4.3 4.3 0 0 0-6.7 5.3" />
+      <path d="M12 20.3s-3.6-2.6-6.1-5.6" />
+      <path d="M18.9 12.4c-1 1.4-2.3 2.7-3.6 3.9" />
+      <path d="M2.5 12.5h4l1.8-3.2 2.6 6 2-3.4 1.3 2.1h7.3" />
+    </svg>
+  );
+}

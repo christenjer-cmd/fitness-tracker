@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
+import GarminImport from '../components/GarminImport';
 import { useStore } from '../store/useStore';
 import { ChevronIcon, DumbbellIcon, TrashIcon } from '../components/icons';
 import { ProgressIllustration } from '../components/illustrations';
@@ -299,6 +300,8 @@ export default function HistoryPage() {
           )}
         </div>
       )}
+
+      <GarminImport />
 
       <div className="pt-2 space-y-2.5">
         <div className="h-px bg-line" />
