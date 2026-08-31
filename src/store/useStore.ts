@@ -242,6 +242,7 @@ export const useStore = create<StoreState>()(
           exercises: w.exercises.map((e) => ({
             id: uid(),
             exerciseId: resolveExerciseId(e.name),
+            notes: e.notes,
             sets: e.sets.map((s) => ({
               id: uid(),
               reps: s.reps,

@@ -114,6 +114,26 @@ fréquences cardiaques et charges. Pour l'éviter, il suffit de ne pas utiliser
 Les exercices sont rapprochés du catalogue par leur nom ; ceux que Garmin nomme
 autrement sont créés comme exercices personnalisés à l'import.
 
+## Reprise des notes prises au téléphone
+
+Avant l'app, les séances étaient notées à la main dans l'application Notes.
+`scripts/import/notes-to-json.mjs` convertit ce carnet en fichier de
+synchronisation `.json`, importable depuis l'onglet Historique :
+
+```bash
+node scripts/import/notes-to-json.mjs
+```
+
+Il attend le carnet dans `scripts/import/notes-telephone.txt`, au format d'origine :
+une ligne `jj.mm` éventuellement suivie du thème de la séance, puis une alternance
+nom d'exercice / séries (`8-7-6-6 52kg`, les échauffements notés `12 30kg` en tête).
+L'année avance toute seule à chaque fois que le mois recule.
+
+Le script ne devine rien en silence : une charge sans unité, des répétitions entre
+parenthèses ou une mention libre sont recopiées dans la note de l'exercice et
+listées dans `rapport-conversion.txt`. Ces trois fichiers restent hors du dépôt,
+qui est public.
+
 ## Sauvegarde
 
 Les données ne quittent jamais l'appareil. L'onglet Historique propose un export

@@ -83,6 +83,73 @@ export const EXERCISES: Exercise[] = [
   { id: 'velo', name: 'Vélo (salle)', muscleGroups: ['cardio', 'jambes'], equipment: 'machine' },
   { id: 'tapis-course', name: 'Tapis de course', muscleGroups: ['cardio', 'jambes'], equipment: 'machine' },
   { id: 'corde-a-sauter', name: 'Corde à sauter', muscleGroups: ['cardio', 'mollets'], equipment: 'autre' },
+
+  // --- Salle : mouvements repris du carnet de notes (2025-2026) ---
+  // Vocabulaire d'origine conservé : c'est celui des séances déjà notées.
+
+  // Pectoraux
+  { id: 'converging-chest-press', name: 'Converging chest press', muscleGroups: ['pectoraux', 'triceps', 'epaules'], equipment: 'machine' },
+  { id: 'diverging-chest-press', name: 'Diverging chest press', muscleGroups: ['pectoraux', 'triceps'], equipment: 'machine' },
+  { id: 'chest-press', name: 'Chest press', muscleGroups: ['pectoraux', 'triceps'], equipment: 'machine' },
+  { id: 'developpe-couche-smith', name: 'Développé couché Smith', muscleGroups: ['pectoraux', 'triceps', 'epaules'], equipment: 'machine' },
+  { id: 'developpe-incline-smith', name: 'Développé incliné Smith', muscleGroups: ['pectoraux', 'epaules'], equipment: 'machine' },
+  { id: 'developpe-incline-machine', name: 'Développé incliné machine', muscleGroups: ['pectoraux', 'epaules'], equipment: 'machine' },
+  { id: 'pec-fly-machine', name: 'Pec fly machine', muscleGroups: ['pectoraux'], equipment: 'machine' },
+  { id: 'ecarte-poulie-haut-bas', name: 'Écarté poulie haut-bas (high to low)', muscleGroups: ['pectoraux'], equipment: 'poulie' },
+  { id: 'ecarte-poulie-bas-haut', name: 'Écarté poulie bas-haut (low to high)', muscleGroups: ['pectoraux'], equipment: 'poulie' },
+
+  // Dos
+  { id: 'lat-pulldown', name: 'Lat pulldown', muscleGroups: ['dos', 'biceps'], equipment: 'poulie' },
+  { id: 'seated-row', name: 'Seated row', muscleGroups: ['dos', 'biceps'], equipment: 'machine' },
+  { id: 'seated-row-unilateral', name: 'Seated row unilatéral', muscleGroups: ['dos', 'biceps'], equipment: 'machine' },
+  { id: 'diverging-seated-row', name: 'Diverging seated row', muscleGroups: ['dos', 'biceps'], equipment: 'machine' },
+  { id: 'low-row', name: 'Low row', muscleGroups: ['dos', 'biceps'], equipment: 'machine' },
+  { id: 'rowing', name: 'Rowing', muscleGroups: ['dos', 'biceps'], equipment: 'barre' },
+  { id: 'tractions-assistees', name: 'Tractions assistées (machine)', muscleGroups: ['dos', 'biceps'], equipment: 'machine' },
+  { id: 'tractions-elastique', name: 'Tractions élastique', muscleGroups: ['dos', 'biceps'], equipment: 'elastique' },
+  { id: 'tractions-negatives', name: 'Tractions négatives', muscleGroups: ['dos', 'biceps'], equipment: 'poids-du-corps' },
+  { id: 'bas-du-dos', name: 'Bas du dos (lombaires)', muscleGroups: ['dos'], equipment: 'machine' },
+  { id: 'abdos-machine', name: 'Abdos machine', muscleGroups: ['abdominaux'], equipment: 'machine' },
+
+  // Épaules
+  { id: 'shoulder-press', name: 'Shoulder press', muscleGroups: ['epaules', 'triceps'], equipment: 'machine' },
+  { id: 'shoulder-press-machine', name: 'Shoulder press machine', muscleGroups: ['epaules', 'triceps'], equipment: 'machine' },
+  { id: 'elevation-laterale-poulie', name: 'Élévations latérales poulie', muscleGroups: ['epaules'], equipment: 'poulie' },
+  { id: 'rear-delt-poulie', name: 'Rear delt poulie', muscleGroups: ['epaules', 'dos'], equipment: 'poulie' },
+  { id: 'rear-delt-machine', name: 'Rear delt machine', muscleGroups: ['epaules', 'dos'], equipment: 'machine' },
+
+  // Biceps
+  { id: 'hammer-curl-halteres', name: 'Hammer curl haltères', muscleGroups: ['biceps', 'avant-bras'], equipment: 'halteres' },
+  { id: 'hammer-curl-poulie', name: 'Hammer curl poulie', muscleGroups: ['biceps', 'avant-bras'], equipment: 'poulie' },
+  { id: 'hammer-curl-preacher', name: 'Hammer curl preacher', muscleGroups: ['biceps', 'avant-bras'], equipment: 'halteres' },
+  { id: 'curl-poulie', name: 'Curl poulie', muscleGroups: ['biceps'], equipment: 'poulie' },
+  { id: 'curl-barre-ez', name: 'Curl barre EZ', muscleGroups: ['biceps'], equipment: 'barre' },
+  { id: 'curl-incline', name: 'Curl incliné', muscleGroups: ['biceps'], equipment: 'halteres' },
+  { id: 'curl-assis', name: 'Curl assis', muscleGroups: ['biceps'], equipment: 'halteres' },
+  { id: 'bayesian-curl-poulie', name: 'Bayesian curl poulie', muscleGroups: ['biceps'], equipment: 'poulie' },
+  { id: 'bayesian-curl-unilateral', name: 'Bayesian curl unilatéral', muscleGroups: ['biceps'], equipment: 'poulie' },
+  { id: 'preacher-curl-barre-ez', name: 'Preacher curl barre EZ', muscleGroups: ['biceps'], equipment: 'barre' },
+  { id: 'preacher-curl-haltere', name: 'Preacher curl haltère', muscleGroups: ['biceps'], equipment: 'halteres' },
+
+  // Triceps
+  { id: 'triceps-pushdown-poulie', name: 'Triceps pushdown poulie', muscleGroups: ['triceps'], equipment: 'poulie' },
+  { id: 'katana-extension', name: 'Katana extension', muscleGroups: ['triceps'], equipment: 'poulie' },
+  { id: 'extension-triceps-overhead', name: 'Extension triceps overhead', muscleGroups: ['triceps'], equipment: 'halteres' },
+  { id: 'extension-triceps-overhead-poulie', name: 'Extension triceps overhead poulie', muscleGroups: ['triceps'], equipment: 'poulie' },
+  { id: 'extension-triceps', name: 'Extension triceps', muscleGroups: ['triceps'], equipment: 'poulie' },
+  { id: 'triceps-close-grip-smith', name: 'Triceps close grip Smith', muscleGroups: ['triceps', 'pectoraux'], equipment: 'machine' },
+  { id: 'kickback-triceps-poulie', name: 'Kickback triceps poulie', muscleGroups: ['triceps'], equipment: 'poulie' },
+  { id: 'kickback-triceps-unilateral', name: 'Kickback triceps unilatéral', muscleGroups: ['triceps'], equipment: 'poulie' },
+
+  // Jambes
+  { id: 'hack-squat', name: 'Hack squat', muscleGroups: ['jambes', 'fessiers'], equipment: 'machine' },
+  { id: 'perfect-squat', name: 'Perfect squat', muscleGroups: ['jambes', 'fessiers'], equipment: 'machine' },
+  { id: 'leg-press-machine', name: 'Leg press', muscleGroups: ['jambes', 'fessiers'], equipment: 'machine' },
+  { id: 'sissy-squat', name: 'Sissy squat', muscleGroups: ['jambes'], equipment: 'poids-du-corps' },
+  { id: 'leg-extension-sissy-squat', name: 'Leg extension + Sissy squat', muscleGroups: ['jambes'], equipment: 'machine' },
+  { id: 'calf-press', name: 'Calf press', muscleGroups: ['mollets'], equipment: 'machine' },
+  { id: 'adducteur', name: 'Adducteur', muscleGroups: ['jambes'], equipment: 'machine' },
+  { id: 'abducteur', name: 'Abducteur', muscleGroups: ['jambes', 'fessiers'], equipment: 'machine' },
 ];
 
 export const EQUIPMENT_LABELS: Record<Equipment, string> = {

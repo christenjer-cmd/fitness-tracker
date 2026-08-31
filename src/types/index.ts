@@ -63,7 +63,7 @@ export interface ImportedWorkout {
   startedAt: string;
   finishedAt: string;
   notes?: string;
-  exercises: { name: string; sets: { reps: number; weightKg: number }[] }[];
+  exercises: { name: string; sets: { reps: number; weightKg: number }[]; notes?: string }[];
 }
 
 /** 'cardio' regroupe marche, marche inclinée, tapis, escaliers, elliptique. */

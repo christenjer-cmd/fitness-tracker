@@ -9,3 +9,9 @@ dev-err.log
 garmin.local.json
 .garmin-tokens/
 garmin-export.json
+
+# Carnet de notes du téléphone et sa conversion : le dépôt est public,
+# ces fichiers contiennent des remarques personnelles.
+scripts/import/notes-telephone.txt
+scripts/import/seances-notees.json
+scripts/import/rapport-conversion.txt

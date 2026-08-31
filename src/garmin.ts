@@ -444,6 +444,7 @@ function parseSyncJson(content: string): ParseResult {
         const sets = Array.isArray(e.sets) ? e.sets : [];
         return {
           name: typeof e.name === 'string' && e.name.trim() ? e.name : 'Exercice Garmin',
+          notes: typeof e.notes === 'string' && e.notes.trim() ? e.notes : undefined,
           sets: sets.map((rawSet) => {
             const s = rawSet as Record<string, unknown>;
             return {
