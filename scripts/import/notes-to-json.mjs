@@ -3,6 +3,8 @@
 //
 //   node scripts/import/notes-to-json.mjs
 //
+// La sortie va dans public/, d'où l'app la récupère seule au démarrage.
+//
 // Les notes sont écrites à la main : ce script ne devine rien en silence.
 // Tout ce qu'il n'a pas pu structurer (mentions libres, séries entre
 // parenthèses, poids manquant) est recopié dans la note de l'exercice et
@@ -14,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const SOURCE = join(here, 'notes-telephone.txt');
-const OUTPUT = join(here, 'seances-notees.json');
+const OUTPUT = join(here, '..', '..', 'public', 'carnet-notes.json');
 const REPORT = join(here, 'rapport-conversion.txt');
 
 /** Première année du carnet ; l'année avance à chaque fois que le mois recule. */

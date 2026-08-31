@@ -58,7 +58,7 @@ La séparation course / cardio vient du type d'activité renvoyé par Garmin. Le
 activités enregistrées avant cette séparation sont reclassées automatiquement
 d'après leur libellé, au premier lancement.
 
-## Import Garmin
+## Import
 
 L'onglet Historique accepte trois formats :
 
@@ -95,7 +95,9 @@ les N derniers jours, `--out` pour choisir le fichier de sortie.
 Avec `--publish`, le script écrit dans `public/garmin-data.json` puis pousse sur
 le dépôt. GitHub reconstruit le site, et l'app lit ce fichier à chaque ouverture
 pour ajouter les activités qu'elle ne connaît pas encore. Plus aucun fichier à
-transférer vers le téléphone.
+transférer vers le téléphone. Le carnet repris du téléphone emprunte le même
+chemin, dans son propre fichier (`public/carnet-notes.json`), que ce script ne
+touche pas.
 
 ```bash
 node scripts/garmin-sync.mjs --publish
@@ -131,8 +133,12 @@ L'année avance toute seule à chaque fois que le mois recule.
 
 Le script ne devine rien en silence : une charge sans unité, des répétitions entre
 parenthèses ou une mention libre sont recopiées dans la note de l'exercice et
-listées dans `rapport-conversion.txt`. Ces trois fichiers restent hors du dépôt,
-qui est public.
+listées dans `rapport-conversion.txt`, qui reste hors du dépôt.
+
+La sortie est écrite dans `public/carnet-notes.json`, à côté du fichier Garmin,
+et l'app la récupère seule à l'ouverture : aucun import manuel. Une fois le
+carnet repris, elle cesse de le télécharger. Comme pour les données Garmin,
+**ce fichier est public** puisque le dépôt l'est.
 
 ## Sauvegarde
 

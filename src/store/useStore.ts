@@ -206,9 +206,29 @@ export const useStore = create<StoreState>()(
       },
 
       addWorkouts: (incoming) => {
-        const known = new Set(get().workouts.map((w) => w.externalId).filter(Boolean));
+        const existing = get().workouts;
+        const known = new Set(existing.map((w) => w.externalId).filter(Boolean));
         const fresh = incoming.filter((w) => !known.has(w.externalId));
         if (fresh.length === 0) return 0;
+
+        // Garmin et le carnet du téléphone décrivent parfois la même séance.
+        // Garmin en livre un bloc anonyme, toutes séries confondues, quand le
+        // carnet nomme les exercices et sépare les séries : le carnet l'emporte
+        // et hérite des horaires réels, seuls que Garmin connaisse vraiment.
+        const fromNotes = (id?: string) => Boolean(id?.startsWith('notes:'));
+        const clashOf = (w: ImportedWorkout) =>
+          existing.find((e) => e.date === w.date && fromNotes(e.externalId) !== fromNotes(w.externalId));
+
+        const superseded = new Set<string>();
+        const retained = fresh.filter((w) => {
+          const clash = clashOf(w);
+          if (!clash) return true;
+          // La séance déjà en place vient du carnet : Garmin ne la double pas.
+          if (!fromNotes(w.externalId)) return false;
+          superseded.add(clash.id);
+          return true;
+        });
+        if (retained.length === 0) return 0;
 
         // Les exercices absents du catalogue sont créés au passage, une seule
         // fois même s'ils reviennent dans plusieurs séances importées.
@@ -232,11 +252,11 @@ export const useStore = create<StoreState>()(
           return created.id;
         };
 
-        const sessions: WorkoutSession[] = fresh.map((w) => ({
+        const sessions: WorkoutSession[] = retained.map((w) => ({
           id: uid(),
           date: w.date,
-          startedAt: w.startedAt,
-          finishedAt: w.finishedAt,
+          startedAt: clashOf(w)?.startedAt ?? w.startedAt,
+          finishedAt: clashOf(w)?.finishedAt ?? w.finishedAt,
           notes: w.notes,
           externalId: w.externalId,
           exercises: w.exercises.map((e) => ({
@@ -254,8 +274,8 @@ export const useStore = create<StoreState>()(
 
         set((state) => ({
           customExercises: [...state.customExercises, ...createdExercises],
-          workouts: [...sessions, ...state.workouts].sort((a, b) =>
-            a.startedAt < b.startedAt ? 1 : -1
+          workouts: [...sessions, ...state.workouts.filter((w) => !superseded.has(w.id))].sort(
+            (a, b) => (a.startedAt < b.startedAt ? 1 : -1)
           ),
         }));
         return sessions.length;
