@@ -134,7 +134,9 @@ const EXERCISE_LABELS = {
 };
 
 function prettifyExercise(raw) {
-  if (!raw) return 'Exercice Garmin';
+  // La montre devine le mouvement et se trompe souvent. Autant l'annoncer
+  // clairement plutôt que d'afficher le « UNKNOWN » brut de Garmin.
+  if (!raw || raw === 'UNKNOWN') return 'Exercice non identifié';
   if (EXERCISE_LABELS[raw]) return EXERCISE_LABELS[raw];
   const words = raw.toLowerCase().split('_').join(' ');
   return words.charAt(0).toUpperCase() + words.slice(1);
@@ -326,7 +328,9 @@ async function main() {
       let sets = [];
       try {
         const detail = await gc.get(
-          `https://connect.garmin.com/activity-service/activity/${activity.activityId}/exerciseSets`
+          // L'API vit sur connectapi.garmin.com ; connect.garmin.com sert le site web
+          // et répond 404 sur ces chemins.
+          `https://connectapi.garmin.com/activity-service/activity/${activity.activityId}/exerciseSets`
         );
         sets = detail?.exerciseSets ?? [];
       } catch (e) {
