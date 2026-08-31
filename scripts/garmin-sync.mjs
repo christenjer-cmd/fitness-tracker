@@ -195,6 +195,24 @@ export function toWorkout(activity, exerciseSets) {
   };
 }
 
+/* ---------- erreurs lisibles ---------- */
+
+// Garmin répond parfois par une page HTML complète. Brute, elle noie la console
+// sous des milliers de caractères et masque l'information utile.
+function cleanErrorMessage(error) {
+  const raw = String(error?.message ?? error ?? 'erreur inconnue');
+  const withoutHtml = raw
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const status = raw.match(/\((\d{3})\)/)?.[1];
+  const short = withoutHtml.length > 180 ? `${withoutHtml.slice(0, 180)}...` : withoutHtml;
+  if (status === '401' || status === '403') return `refus d'authentification (${status})`;
+  if (status === '429') return 'trop de requêtes, Garmin demande de patienter (429)';
+  if (status) return `Garmin a répondu ${status} : ${short}`;
+  return short;
+}
+
 /* ---------- publication vers GitHub ---------- */
 
 // Dépose le fichier sur le dépôt : GitHub reconstruit le site, et l'app va
@@ -261,7 +279,20 @@ async function main() {
   }
 
   console.log(`Récupération des ${args.limit} dernières activités...`);
-  let activities = await gc.getActivities(0, args.limit);
+  let activities;
+  try {
+    activities = await gc.getActivities(0, args.limit);
+  } catch (error) {
+    // Un jeton périmé se manifeste par un refus côté Garmin. Plutôt que
+    // d'échouer, on jette le cache et on refait une connexion complète.
+    if (!usedCachedToken) throw error;
+    console.log(`Jeton refusé (${cleanErrorMessage(error)}), nouvelle connexion...`);
+    fs.rmSync(TOKEN_DIR, { recursive: true, force: true });
+    await gc.login();
+    fs.mkdirSync(TOKEN_DIR, { recursive: true });
+    gc.exportTokenToFile(TOKEN_DIR);
+    activities = await gc.getActivities(0, args.limit);
+  }
 
   if (args.days > 0) {
     const floor = Date.now() - args.days * 86400000;
@@ -290,7 +321,7 @@ async function main() {
         );
         sets = detail?.exerciseSets ?? [];
       } catch (e) {
-        ignored.push(`${activity.activityId} (${typeKey}, séries illisibles : ${e.message})`);
+        ignored.push(`${activity.activityId} (${typeKey}, séries illisibles : ${cleanErrorMessage(e)})`);
         continue;
       }
       const workout = toWorkout(activity, sets);
@@ -337,7 +368,7 @@ const executedDirectly =
 
 if (executedDirectly) main().catch((error) => {
   console.error('');
-  console.error('Échec :', error?.message ?? error);
+  console.error('Échec :', cleanErrorMessage(error));
   console.error('');
   console.error('Pistes : mot de passe incorrect, double authentification activée sur le');
   console.error('compte, ou Garmin a modifié sa procédure de connexion. Supprime le dossier');
