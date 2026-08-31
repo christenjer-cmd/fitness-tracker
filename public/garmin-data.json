@@ -1,10 +1,20 @@
 {
   "source": "garmin-sync",
-  "generatedAt": "2026-08-31T08:14:51.414Z",
+  "generatedAt": "2026-08-31T08:47:15.779Z",
   "runs": [
+    {
+      "externalId": "garmin:24176732982",
+      "date": "2026-08-30",
+      "sport": "cardio",
+      "distanceKm": 0,
+      "durationMin": 10.1,
+      "avgHeartRate": 154,
+      "notes": "Stepper"
+    },
     {
       "externalId": "garmin:24176643708",
       "date": "2026-08-30",
+      "sport": "cardio",
       "distanceKm": 1,
       "durationMin": 14.9,
       "avgHeartRate": 126,
@@ -13,6 +23,7 @@
     {
       "externalId": "garmin:24174922626",
       "date": "2026-08-30",
+      "sport": "cardio",
       "distanceKm": 5.98,
       "durationMin": 75.1,
       "avgHeartRate": 85,
@@ -21,6 +32,7 @@
     {
       "externalId": "garmin:24169165779",
       "date": "2026-08-30",
+      "sport": "cardio",
       "distanceKm": 5.59,
       "durationMin": 73.5,
       "avgHeartRate": 93,
@@ -29,6 +41,7 @@
     {
       "externalId": "garmin:24162396828",
       "date": "2026-08-29",
+      "sport": "cardio",
       "distanceKm": 3.92,
       "durationMin": 51.5,
       "avgHeartRate": 84,
@@ -37,6 +50,7 @@
     {
       "externalId": "garmin:24160267458",
       "date": "2026-08-29",
+      "sport": "cardio",
       "distanceKm": 2.23,
       "durationMin": 30,
       "avgHeartRate": 95,
@@ -45,6 +59,7 @@
     {
       "externalId": "garmin:24120545447",
       "date": "2026-08-26",
+      "sport": "cardio",
       "distanceKm": 2.46,
       "durationMin": 27.3,
       "avgHeartRate": 105,
@@ -53,6 +68,7 @@
     {
       "externalId": "garmin:24118660680",
       "date": "2026-08-26",
+      "sport": "cardio",
       "distanceKm": 2.64,
       "durationMin": 29.9,
       "avgHeartRate": 103,
@@ -61,6 +77,7 @@
     {
       "externalId": "garmin:24112691968",
       "date": "2026-08-25",
+      "sport": "cardio",
       "distanceKm": 6.51,
       "durationMin": 94.8,
       "avgHeartRate": 80,
@@ -69,6 +86,7 @@
     {
       "externalId": "garmin:24081047570",
       "date": "2026-08-23",
+      "sport": "cardio",
       "distanceKm": 1.32,
       "durationMin": 15.2,
       "avgHeartRate": 101,
@@ -77,6 +95,7 @@
     {
       "externalId": "garmin:24080881293",
       "date": "2026-08-23",
+      "sport": "course",
       "distanceKm": 2.47,
       "durationMin": 21.5,
       "avgHeartRate": 135,
@@ -85,6 +104,7 @@
     {
       "externalId": "garmin:24080668727",
       "date": "2026-08-23",
+      "sport": "cardio",
       "distanceKm": 0.37,
       "durationMin": 3.4,
       "avgHeartRate": 97,
@@ -93,6 +113,7 @@
     {
       "externalId": "garmin:24070463902",
       "date": "2026-08-22",
+      "sport": "cardio",
       "distanceKm": 2.71,
       "durationMin": 69.3,
       "avgHeartRate": 67,
@@ -101,6 +122,7 @@
     {
       "externalId": "garmin:24069249152",
       "date": "2026-08-22",
+      "sport": "cardio",
       "distanceKm": 1.64,
       "durationMin": 20.1,
       "avgHeartRate": 85,
@@ -109,6 +131,7 @@
     {
       "externalId": "garmin:24049970975",
       "date": "2026-08-20",
+      "sport": "cardio",
       "distanceKm": 0.99,
       "durationMin": 15.5,
       "avgHeartRate": 153,
@@ -117,6 +140,7 @@
     {
       "externalId": "garmin:24041796639",
       "date": "2026-08-19",
+      "sport": "cardio",
       "distanceKm": 4.01,
       "durationMin": 57.4,
       "avgHeartRate": 84,
@@ -125,6 +149,7 @@
     {
       "externalId": "garmin:24035924764",
       "date": "2026-08-19",
+      "sport": "cardio",
       "distanceKm": 1.35,
       "durationMin": 14.4,
       "avgHeartRate": 105,
@@ -133,6 +158,7 @@
     {
       "externalId": "garmin:24010007847",
       "date": "2026-08-17",
+      "sport": "cardio",
       "distanceKm": 0.56,
       "durationMin": 6.9,
       "avgHeartRate": 135,
@@ -141,6 +167,7 @@
     {
       "externalId": "garmin:24003101728",
       "date": "2026-08-16",
+      "sport": "cardio",
       "distanceKm": 3.39,
       "durationMin": 43.5,
       "avgHeartRate": 97,
@@ -149,6 +176,7 @@
     {
       "externalId": "garmin:24002740967",
       "date": "2026-08-16",
+      "sport": "course",
       "distanceKm": 2.96,
       "durationMin": 27.9,
       "avgHeartRate": 128,
@@ -157,6 +185,7 @@
     {
       "externalId": "garmin:24002469864",
       "date": "2026-08-16",
+      "sport": "cardio",
       "distanceKm": 2.17,
       "durationMin": 23.1,
       "avgHeartRate": 103,
@@ -165,6 +194,7 @@
     {
       "externalId": "garmin:23947275387",
       "date": "2026-08-12",
+      "sport": "course",
       "distanceKm": 6.35,
       "durationMin": 47.3,
       "avgHeartRate": 148,
@@ -173,6 +203,7 @@
     {
       "externalId": "garmin:23941622871",
       "date": "2026-08-11",
+      "sport": "cardio",
       "distanceKm": 4.3,
       "durationMin": 62.1,
       "avgHeartRate": 86,
@@ -181,11 +212,2569 @@
     {
       "externalId": "garmin:23925383424",
       "date": "2026-08-10",
+      "sport": "cardio",
       "distanceKm": 7.33,
       "durationMin": 94.2,
       "avgHeartRate": 111,
       "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23913641137",
+      "date": "2026-08-09",
+      "sport": "course",
+      "distanceKm": 6.21,
+      "durationMin": 48.7,
+      "avgHeartRate": 146,
+      "notes": "La Chaux-de-Fonds Course à pied"
+    },
+    {
+      "externalId": "garmin:23864298564",
+      "date": "2026-08-05",
+      "sport": "cardio",
+      "distanceKm": 4.21,
+      "durationMin": 57.8,
+      "avgHeartRate": 89,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23850445254",
+      "date": "2026-08-04",
+      "sport": "cardio",
+      "distanceKm": 4.22,
+      "durationMin": 51.8,
+      "avgHeartRate": 118,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23840244582",
+      "date": "2026-08-03",
+      "sport": "cardio",
+      "distanceKm": 3.73,
+      "durationMin": 50.8,
+      "avgHeartRate": 89,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23821965766",
+      "date": "2026-08-02",
+      "sport": "cardio",
+      "distanceKm": 4.09,
+      "durationMin": 52.5,
+      "avgHeartRate": 88,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23802882003",
+      "date": "2026-07-31",
+      "sport": "cardio",
+      "distanceKm": 7.15,
+      "durationMin": 98.6,
+      "avgHeartRate": 82,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23793550797",
+      "date": "2026-07-30",
+      "sport": "cardio",
+      "distanceKm": 4.46,
+      "durationMin": 58.8,
+      "avgHeartRate": 77,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23781808856",
+      "date": "2026-07-29",
+      "sport": "cardio",
+      "distanceKm": 4.42,
+      "durationMin": 61.9,
+      "avgHeartRate": 83,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23746601008",
+      "date": "2026-07-27",
+      "sport": "cardio",
+      "distanceKm": 2.59,
+      "durationMin": 35.5,
+      "avgHeartRate": 91,
+      "notes": "Highlands Marche à pied"
+    },
+    {
+      "externalId": "garmin:23725967311",
+      "date": "2026-07-25",
+      "sport": "cardio",
+      "distanceKm": 8.75,
+      "durationMin": 186.2,
+      "avgHeartRate": 85,
+      "notes": "City of Edinburgh Marche à pied"
+    },
+    {
+      "externalId": "garmin:23701881107",
+      "date": "2026-07-23",
+      "sport": "cardio",
+      "distanceKm": 8.55,
+      "durationMin": 106.6,
+      "avgHeartRate": 91,
+      "notes": "La Brévine Marche à pied"
+    },
+    {
+      "externalId": "garmin:23682873803",
+      "date": "2026-07-21",
+      "sport": "cardio",
+      "distanceKm": 3.6,
+      "durationMin": 47.7,
+      "avgHeartRate": 88,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23669681602",
+      "date": "2026-07-20",
+      "sport": "cardio",
+      "distanceKm": 4.48,
+      "durationMin": 63.2,
+      "avgHeartRate": 85,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23652503772",
+      "date": "2026-07-19",
+      "sport": "cardio",
+      "distanceKm": 9.61,
+      "durationMin": 152,
+      "avgHeartRate": 108,
+      "notes": "L'Abbaye Marche à pied"
+    },
+    {
+      "externalId": "garmin:23634999654",
+      "date": "2026-07-17",
+      "sport": "cardio",
+      "distanceKm": 3.48,
+      "durationMin": 49.4,
+      "avgHeartRate": 79,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23591349778",
+      "date": "2026-07-14",
+      "sport": "cardio",
+      "distanceKm": 1.05,
+      "durationMin": 15,
+      "avgHeartRate": 142,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23587329310",
+      "date": "2026-07-13",
+      "sport": "cardio",
+      "distanceKm": 4.17,
+      "durationMin": 48.9,
+      "avgHeartRate": 91,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23579165354",
+      "date": "2026-07-13",
+      "sport": "cardio",
+      "distanceKm": 4.57,
+      "durationMin": 53,
+      "avgHeartRate": 103,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23574864157",
+      "date": "2026-07-12",
+      "sport": "cardio",
+      "distanceKm": 5.93,
+      "durationMin": 83.3,
+      "avgHeartRate": 83,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23533275889",
+      "date": "2026-07-09",
+      "sport": "cardio",
+      "distanceKm": 2.21,
+      "durationMin": 29.1,
+      "avgHeartRate": 96,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23520603678",
+      "date": "2026-07-08",
+      "sport": "cardio",
+      "distanceKm": 0.97,
+      "durationMin": 18.9,
+      "avgHeartRate": 87,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23511706814",
+      "date": "2026-07-07",
+      "sport": "cardio",
+      "distanceKm": 4.62,
+      "durationMin": 51.5,
+      "avgHeartRate": 109,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23508346303",
+      "date": "2026-07-07",
+      "sport": "cardio",
+      "distanceKm": 1.28,
+      "durationMin": 22,
+      "avgHeartRate": 119,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23502701470",
+      "date": "2026-07-06",
+      "sport": "cardio",
+      "distanceKm": 2.23,
+      "durationMin": 24.9,
+      "avgHeartRate": 100,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23492667028",
+      "date": "2026-07-05",
+      "sport": "cardio",
+      "distanceKm": 4.45,
+      "durationMin": 62.6,
+      "avgHeartRate": 78,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23480989595",
+      "date": "2026-07-04",
+      "sport": "cardio",
+      "distanceKm": 4.51,
+      "durationMin": 62.2,
+      "avgHeartRate": 83,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23479662094",
+      "date": "2026-07-04",
+      "sport": "cardio",
+      "distanceKm": 1.73,
+      "durationMin": 21.1,
+      "avgHeartRate": 95,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23465431289",
+      "date": "2026-07-03",
+      "sport": "cardio",
+      "distanceKm": 4.4,
+      "durationMin": 77.9,
+      "avgHeartRate": 92,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23418726627",
+      "date": "2026-06-29",
+      "sport": "cardio",
+      "distanceKm": 1.16,
+      "durationMin": 15.1,
+      "avgHeartRate": 143,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23409010542",
+      "date": "2026-06-28",
+      "sport": "cardio",
+      "distanceKm": 3.07,
+      "durationMin": 37.6,
+      "avgHeartRate": 93,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23389325324",
+      "date": "2026-06-26",
+      "sport": "cardio",
+      "distanceKm": 1.07,
+      "durationMin": 14.5,
+      "avgHeartRate": 86,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23352463838",
+      "date": "2026-06-23",
+      "sport": "cardio",
+      "distanceKm": 1.01,
+      "durationMin": 15.1,
+      "avgHeartRate": 136,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23341325261",
+      "date": "2026-06-22",
+      "sport": "cardio",
+      "distanceKm": 1.44,
+      "durationMin": 21,
+      "avgHeartRate": 132,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23326180424",
+      "date": "2026-06-21",
+      "sport": "cardio",
+      "distanceKm": 4.12,
+      "durationMin": 67.2,
+      "avgHeartRate": 91,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23315495212",
+      "date": "2026-06-20",
+      "sport": "cardio",
+      "distanceKm": 1.17,
+      "durationMin": 18.3,
+      "avgHeartRate": 135,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:23305944636",
+      "date": "2026-06-19",
+      "sport": "cardio",
+      "distanceKm": 8.05,
+      "durationMin": 78.1,
+      "avgHeartRate": 121,
+      "notes": "Les Bois Marche à pied"
+    },
+    {
+      "externalId": "garmin:23303205982",
+      "date": "2026-06-19",
+      "sport": "course",
+      "distanceKm": 5.21,
+      "durationMin": 42.8,
+      "avgHeartRate": 142,
+      "notes": "La Chaux-de-Fonds Course à pied"
+    },
+    {
+      "externalId": "garmin:23294923777",
+      "date": "2026-06-18",
+      "sport": "cardio",
+      "distanceKm": 1.27,
+      "durationMin": 15.3,
+      "avgHeartRate": 132,
+      "notes": "Marche à pied"
     }
   ],
-  "workouts": []
+  "workouts": [
+    {
+      "externalId": "garmin:24123092183",
+      "date": "2026-08-26",
+      "startedAt": "2026-08-26T11:54:44.000Z",
+      "finishedAt": "2026-08-26T12:48:55.705Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 20
+            },
+            {
+              "reps": 13,
+              "weightKg": 40
+            },
+            {
+              "reps": 11,
+              "weightKg": 60
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 4,
+              "weightKg": 70
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 3,
+              "weightKg": 70
+            },
+            {
+              "reps": 4,
+              "weightKg": 70
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 25
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 25
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 7,
+              "weightKg": 20
+            },
+            {
+              "reps": 9,
+              "weightKg": 25
+            },
+            {
+              "reps": 9,
+              "weightKg": 25
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 73
+            },
+            {
+              "reps": 11,
+              "weightKg": 73
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 73
+            },
+            {
+              "reps": 8,
+              "weightKg": 73
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:24049744400",
+      "date": "2026-08-20",
+      "startedAt": "2026-08-20T13:52:24.000Z",
+      "finishedAt": "2026-08-20T14:38:29.462Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Tractions",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 32
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Tractions",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 34
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 34
+            },
+            {
+              "reps": 9,
+              "weightKg": 34
+            },
+            {
+              "reps": 9,
+              "weightKg": 34
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 52
+            },
+            {
+              "reps": 9,
+              "weightKg": 62
+            },
+            {
+              "reps": 13,
+              "weightKg": 16
+            },
+            {
+              "reps": 10,
+              "weightKg": 62
+            },
+            {
+              "reps": 13,
+              "weightKg": 16
+            },
+            {
+              "reps": 8,
+              "weightKg": 62
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 16
+            }
+          ]
+        },
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:24006571077",
+      "date": "2026-08-17",
+      "startedAt": "2026-08-17T06:40:55.000Z",
+      "finishedAt": "2026-08-17T07:29:12.524Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 14,
+              "weightKg": 20
+            },
+            {
+              "reps": 14,
+              "weightKg": 40
+            },
+            {
+              "reps": 7,
+              "weightKg": 60
+            },
+            {
+              "reps": 6,
+              "weightKg": 60
+            },
+            {
+              "reps": 5,
+              "weightKg": 60
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 20
+            },
+            {
+              "reps": 8,
+              "weightKg": 20
+            },
+            {
+              "reps": 8,
+              "weightKg": 79
+            },
+            {
+              "reps": 7,
+              "weightKg": 20
+            },
+            {
+              "reps": 8,
+              "weightKg": 79
+            },
+            {
+              "reps": 11,
+              "weightKg": 36
+            },
+            {
+              "reps": 9,
+              "weightKg": 79
+            },
+            {
+              "reps": 12,
+              "weightKg": 36
+            },
+            {
+              "reps": 9,
+              "weightKg": 79
+            },
+            {
+              "reps": 11,
+              "weightKg": 36
+            },
+            {
+              "reps": 6,
+              "weightKg": 20
+            },
+            {
+              "reps": 11,
+              "weightKg": 36
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23983591143",
+      "date": "2026-08-15",
+      "startedAt": "2026-08-15T08:14:33.000Z",
+      "finishedAt": "2026-08-15T09:17:36.910Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 4,
+              "weightKg": 0
+            }
+          ]
+        },
+        {
+          "name": "Tractions",
+          "sets": [
+            {
+              "reps": 3,
+              "weightKg": 0
+            },
+            {
+              "reps": 2,
+              "weightKg": 0
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Tractions",
+          "sets": [
+            {
+              "reps": 7,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 6,
+              "weightKg": 52
+            },
+            {
+              "reps": 9,
+              "weightKg": 45
+            },
+            {
+              "reps": 10,
+              "weightKg": 45
+            },
+            {
+              "reps": 9,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 27
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 27
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 27
+            },
+            {
+              "reps": 8,
+              "weightKg": 29
+            },
+            {
+              "reps": 6,
+              "weightKg": 29
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 6,
+              "weightKg": 29
+            },
+            {
+              "reps": 10,
+              "weightKg": 32
+            },
+            {
+              "reps": 8,
+              "weightKg": 32
+            },
+            {
+              "reps": 9,
+              "weightKg": 32
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23977201314",
+      "date": "2026-08-14",
+      "startedAt": "2026-08-14T17:20:31.000Z",
+      "finishedAt": "2026-08-14T17:26:25.463Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Pompes",
+          "sets": [
+            {
+              "reps": 19,
+              "weightKg": 0
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 18,
+              "weightKg": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23922466911",
+      "date": "2026-08-10",
+      "startedAt": "2026-08-10T11:41:39.000Z",
+      "finishedAt": "2026-08-10T12:33:05.562Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 47
+            },
+            {
+              "reps": 9,
+              "weightKg": 97
+            },
+            {
+              "reps": 12,
+              "weightKg": 93
+            },
+            {
+              "reps": 9,
+              "weightKg": 97
+            },
+            {
+              "reps": 10,
+              "weightKg": 97
+            },
+            {
+              "reps": 12,
+              "weightKg": 93
+            },
+            {
+              "reps": 20,
+              "weightKg": 29
+            },
+            {
+              "reps": 12,
+              "weightKg": 93
+            },
+            {
+              "reps": 12,
+              "weightKg": 93
+            },
+            {
+              "reps": 15,
+              "weightKg": 47
+            },
+            {
+              "reps": 10,
+              "weightKg": 86
+            },
+            {
+              "reps": 12,
+              "weightKg": 86
+            },
+            {
+              "reps": 12,
+              "weightKg": 86
+            },
+            {
+              "reps": 12,
+              "weightKg": 86
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23872512194",
+      "date": "2026-08-06",
+      "startedAt": "2026-08-06T08:55:24.000Z",
+      "finishedAt": "2026-08-06T09:57:16.158Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 13,
+              "weightKg": 30
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 7,
+              "weightKg": 61
+            }
+          ]
+        },
+        {
+          "name": "Tractions",
+          "sets": [
+            {
+              "reps": 2,
+              "weightKg": 0
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 61
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 13,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 3,
+              "weightKg": 0
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 7,
+              "weightKg": 61
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 13,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 14,
+              "weightKg": 20
+            },
+            {
+              "reps": 14,
+              "weightKg": 20
+            },
+            {
+              "reps": 2,
+              "weightKg": 0
+            },
+            {
+              "reps": 11,
+              "weightKg": 16
+            },
+            {
+              "reps": 10,
+              "weightKg": 16
+            },
+            {
+              "reps": 8,
+              "weightKg": 16
+            },
+            {
+              "reps": 7,
+              "weightKg": 16
+            },
+            {
+              "reps": 11,
+              "weightKg": 50
+            },
+            {
+              "reps": 10,
+              "weightKg": 50
+            },
+            {
+              "reps": 11,
+              "weightKg": 50
+            },
+            {
+              "reps": 12,
+              "weightKg": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23845157736",
+      "date": "2026-08-04",
+      "startedAt": "2026-08-04T06:18:49.000Z",
+      "finishedAt": "2026-08-04T07:30:22.670Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 14,
+              "weightKg": 20
+            },
+            {
+              "reps": 15,
+              "weightKg": 40
+            },
+            {
+              "reps": 7,
+              "weightKg": 60
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 6,
+              "weightKg": 60
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 7,
+              "weightKg": 60
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 20
+            },
+            {
+              "reps": 7,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 27
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 73
+            }
+          ]
+        },
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 27
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 73
+            }
+          ]
+        },
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 27
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 73
+            }
+          ]
+        },
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 27
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 73
+            },
+            {
+              "reps": 12,
+              "weightKg": 36
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 32
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 36
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 32
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 36
+            },
+            {
+              "reps": 9,
+              "weightKg": 32
+            },
+            {
+              "reps": 10,
+              "weightKg": 36
+            },
+            {
+              "reps": 9,
+              "weightKg": 32
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23711127327",
+      "date": "2026-07-24",
+      "startedAt": "2026-07-24T05:10:08.000Z",
+      "finishedAt": "2026-07-24T05:59:38.885Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 16,
+              "weightKg": 39
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 13,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 45
+            },
+            {
+              "reps": 9,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 45
+            },
+            {
+              "reps": 8,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 45
+            },
+            {
+              "reps": 7,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 45
+            },
+            {
+              "reps": 9,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23591200978",
+      "date": "2026-07-14",
+      "startedAt": "2026-07-14T07:17:39.000Z",
+      "finishedAt": "2026-07-14T08:14:50.685Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 14,
+              "weightKg": 39
+            },
+            {
+              "reps": 14,
+              "weightKg": 45
+            },
+            {
+              "reps": 13,
+              "weightKg": 41
+            },
+            {
+              "reps": 11,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 24
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 13,
+              "weightKg": 41
+            },
+            {
+              "reps": 9,
+              "weightKg": 66
+            },
+            {
+              "reps": 9,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 24
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 41
+            }
+          ]
+        },
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 24
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 41
+            },
+            {
+              "reps": 12,
+              "weightKg": 30
+            },
+            {
+              "reps": 9,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 32
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 30
+            },
+            {
+              "reps": 10,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 34
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 30
+            },
+            {
+              "reps": 9,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 34
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 30
+            },
+            {
+              "reps": 9,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 34
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23551508159",
+      "date": "2026-07-10",
+      "startedAt": "2026-07-10T19:53:49.000Z",
+      "finishedAt": "2026-07-10T20:31:18.230Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 59
+            },
+            {
+              "reps": 9,
+              "weightKg": 59
+            },
+            {
+              "reps": 11,
+              "weightKg": 59
+            },
+            {
+              "reps": 9,
+              "weightKg": 59
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 50
+            },
+            {
+              "reps": 11,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Sit up",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 50
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 52
+            },
+            {
+              "reps": 8,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 50
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 50
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Sit up",
+          "sets": [
+            {
+              "reps": 7,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 7,
+              "weightKg": 52
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23508126121",
+      "date": "2026-07-07",
+      "startedAt": "2026-07-07T08:27:53.000Z",
+      "finishedAt": "2026-07-07T09:34:34.635Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 40
+            },
+            {
+              "reps": 12,
+              "weightKg": 50
+            },
+            {
+              "reps": 9,
+              "weightKg": 55
+            },
+            {
+              "reps": 7,
+              "weightKg": 55
+            },
+            {
+              "reps": 7,
+              "weightKg": 55
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 21
+            },
+            {
+              "reps": 12,
+              "weightKg": 21
+            },
+            {
+              "reps": 12,
+              "weightKg": 21
+            },
+            {
+              "reps": 12,
+              "weightKg": 21
+            },
+            {
+              "reps": 12,
+              "weightKg": 21
+            },
+            {
+              "reps": 12,
+              "weightKg": 21
+            },
+            {
+              "reps": 11,
+              "weightKg": 21
+            },
+            {
+              "reps": 11,
+              "weightKg": 21
+            },
+            {
+              "reps": 11,
+              "weightKg": 34
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 16
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 34
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 7,
+              "weightKg": 34
+            },
+            {
+              "reps": 7,
+              "weightKg": 20
+            },
+            {
+              "reps": 7,
+              "weightKg": 34
+            },
+            {
+              "reps": 7,
+              "weightKg": 20
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 16
+            },
+            {
+              "reps": 11,
+              "weightKg": 16
+            },
+            {
+              "reps": 11,
+              "weightKg": 16
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 16
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23446848170",
+      "date": "2026-07-01",
+      "startedAt": "2026-07-01T20:13:35.000Z",
+      "finishedAt": "2026-07-01T20:49:38.185Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 14,
+              "weightKg": 27
+            },
+            {
+              "reps": 14,
+              "weightKg": 27
+            },
+            {
+              "reps": 14,
+              "weightKg": 27
+            },
+            {
+              "reps": 14,
+              "weightKg": 27
+            }
+          ]
+        },
+        {
+          "name": "Squat barre",
+          "sets": [
+            {
+              "reps": 20,
+              "weightKg": 8
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 20,
+              "weightKg": 8
+            }
+          ]
+        },
+        {
+          "name": "Squat barre",
+          "sets": [
+            {
+              "reps": 20,
+              "weightKg": 8
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 20,
+              "weightKg": 8
+            },
+            {
+              "reps": 9,
+              "weightKg": 50
+            },
+            {
+              "reps": 9,
+              "weightKg": 45
+            },
+            {
+              "reps": 8,
+              "weightKg": 50
+            },
+            {
+              "reps": 8,
+              "weightKg": 45
+            },
+            {
+              "reps": 8,
+              "weightKg": 50
+            },
+            {
+              "reps": 8,
+              "weightKg": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23418543006",
+      "date": "2026-06-29",
+      "startedAt": "2026-06-29T13:33:18.000Z",
+      "finishedAt": "2026-06-29T14:22:14.579Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 52
+            },
+            {
+              "reps": 13,
+              "weightKg": 45
+            },
+            {
+              "reps": 10,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Curl biceps",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 52
+            },
+            {
+              "reps": 12,
+              "weightKg": 45
+            },
+            {
+              "reps": 10,
+              "weightKg": 52
+            },
+            {
+              "reps": 12,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 36
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 36
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 36
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 36
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 52
+            },
+            {
+              "reps": 9,
+              "weightKg": 45
+            },
+            {
+              "reps": 8,
+              "weightKg": 45
+            },
+            {
+              "reps": 8,
+              "weightKg": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23399229724",
+      "date": "2026-06-27",
+      "startedAt": "2026-06-27T16:49:51.000Z",
+      "finishedAt": "2026-06-27T17:41:40.207Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 13,
+              "weightKg": 67.5
+            },
+            {
+              "reps": 13,
+              "weightKg": 86
+            },
+            {
+              "reps": 14,
+              "weightKg": 77
+            },
+            {
+              "reps": 12,
+              "weightKg": 93
+            },
+            {
+              "reps": 12,
+              "weightKg": 86
+            },
+            {
+              "reps": 12,
+              "weightKg": 93
+            },
+            {
+              "reps": 12,
+              "weightKg": 86
+            },
+            {
+              "reps": 12,
+              "weightKg": 93
+            },
+            {
+              "reps": 12,
+              "weightKg": 86
+            },
+            {
+              "reps": 12,
+              "weightKg": 93
+            },
+            {
+              "reps": 12,
+              "weightKg": 16
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 50
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 16
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 50
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 16
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 50
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 16
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23371871179",
+      "date": "2026-06-25",
+      "startedAt": "2026-06-25T05:58:50.000Z",
+      "finishedAt": "2026-06-25T06:37:58.269Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Squat barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 45
+            },
+            {
+              "reps": 7,
+              "weightKg": 66
+            },
+            {
+              "reps": 11,
+              "weightKg": 45
+            },
+            {
+              "reps": 8,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 32
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 32
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 32
+            }
+          ]
+        },
+        {
+          "name": "Rowing barre",
+          "sets": [
+            {
+              "reps": 8,
+              "weightKg": 52
+            }
+          ]
+        },
+        {
+          "name": "Extension triceps",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 32
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23352258472",
+      "date": "2026-06-23",
+      "startedAt": "2026-06-23T13:32:26.000Z",
+      "finishedAt": "2026-06-23T14:18:37.000Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 15,
+              "weightKg": 32
+            },
+            {
+              "reps": 13,
+              "weightKg": 52
+            },
+            {
+              "reps": 10,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 13,
+              "weightKg": 16
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 13,
+              "weightKg": 16
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 9,
+              "weightKg": 66
+            }
+          ]
+        },
+        {
+          "name": "Élévations latérales",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 16
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 66
+            },
+            {
+              "reps": 13,
+              "weightKg": 16
+            },
+            {
+              "reps": 9,
+              "weightKg": 73
+            },
+            {
+              "reps": 11,
+              "weightKg": 20.5
+            },
+            {
+              "reps": 9,
+              "weightKg": 73.5
+            },
+            {
+              "reps": 10,
+              "weightKg": 20.5
+            },
+            {
+              "reps": 9,
+              "weightKg": 73
+            },
+            {
+              "reps": 9,
+              "weightKg": 20.5
+            },
+            {
+              "reps": 8,
+              "weightKg": 73
+            },
+            {
+              "reps": 9,
+              "weightKg": 20.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "garmin:23315211837",
+      "date": "2026-06-20",
+      "startedAt": "2026-06-20T09:19:16.000Z",
+      "finishedAt": "2026-06-20T10:04:59.076Z",
+      "notes": "Musculation",
+      "exercises": [
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 13,
+              "weightKg": 67
+            },
+            {
+              "reps": 12,
+              "weightKg": 77
+            },
+            {
+              "reps": 12,
+              "weightKg": 86
+            },
+            {
+              "reps": 12,
+              "weightKg": 77
+            },
+            {
+              "reps": 13,
+              "weightKg": 86
+            },
+            {
+              "reps": 12,
+              "weightKg": 77
+            },
+            {
+              "reps": 12,
+              "weightKg": 77
+            },
+            {
+              "reps": 11,
+              "weightKg": 80
+            },
+            {
+              "reps": 12,
+              "weightKg": 80
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 10,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Développé couché barre",
+          "sets": [
+            {
+              "reps": 11,
+              "weightKg": 45
+            }
+          ]
+        },
+        {
+          "name": "Exercice non identifié",
+          "sets": [
+            {
+              "reps": 12,
+              "weightKg": 45
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
