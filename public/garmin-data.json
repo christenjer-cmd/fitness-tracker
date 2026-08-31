@@ -1,0 +1,191 @@
+{
+  "source": "garmin-sync",
+  "generatedAt": "2026-08-31T08:14:51.414Z",
+  "runs": [
+    {
+      "externalId": "garmin:24176643708",
+      "date": "2026-08-30",
+      "distanceKm": 1,
+      "durationMin": 14.9,
+      "avgHeartRate": 126,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:24174922626",
+      "date": "2026-08-30",
+      "distanceKm": 5.98,
+      "durationMin": 75.1,
+      "avgHeartRate": 85,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:24169165779",
+      "date": "2026-08-30",
+      "distanceKm": 5.59,
+      "durationMin": 73.5,
+      "avgHeartRate": 93,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:24162396828",
+      "date": "2026-08-29",
+      "distanceKm": 3.92,
+      "durationMin": 51.5,
+      "avgHeartRate": 84,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:24160267458",
+      "date": "2026-08-29",
+      "distanceKm": 2.23,
+      "durationMin": 30,
+      "avgHeartRate": 95,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:24120545447",
+      "date": "2026-08-26",
+      "distanceKm": 2.46,
+      "durationMin": 27.3,
+      "avgHeartRate": 105,
+      "notes": "Saignelégier Marche à pied"
+    },
+    {
+      "externalId": "garmin:24118660680",
+      "date": "2026-08-26",
+      "distanceKm": 2.64,
+      "durationMin": 29.9,
+      "avgHeartRate": 103,
+      "notes": "Muriaux Marche à pied"
+    },
+    {
+      "externalId": "garmin:24112691968",
+      "date": "2026-08-25",
+      "distanceKm": 6.51,
+      "durationMin": 94.8,
+      "avgHeartRate": 80,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:24081047570",
+      "date": "2026-08-23",
+      "distanceKm": 1.32,
+      "durationMin": 15.2,
+      "avgHeartRate": 101,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:24080881293",
+      "date": "2026-08-23",
+      "distanceKm": 2.47,
+      "durationMin": 21.5,
+      "avgHeartRate": 135,
+      "notes": "La Chaux-de-Fonds Course à pied"
+    },
+    {
+      "externalId": "garmin:24080668727",
+      "date": "2026-08-23",
+      "distanceKm": 0.37,
+      "durationMin": 3.4,
+      "avgHeartRate": 97,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:24070463902",
+      "date": "2026-08-22",
+      "distanceKm": 2.71,
+      "durationMin": 69.3,
+      "avgHeartRate": 67,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:24069249152",
+      "date": "2026-08-22",
+      "distanceKm": 1.64,
+      "durationMin": 20.1,
+      "avgHeartRate": 85,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:24049970975",
+      "date": "2026-08-20",
+      "distanceKm": 0.99,
+      "durationMin": 15.5,
+      "avgHeartRate": 153,
+      "notes": "Marche à pied"
+    },
+    {
+      "externalId": "garmin:24041796639",
+      "date": "2026-08-19",
+      "distanceKm": 4.01,
+      "durationMin": 57.4,
+      "avgHeartRate": 84,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:24035924764",
+      "date": "2026-08-19",
+      "distanceKm": 1.35,
+      "durationMin": 14.4,
+      "avgHeartRate": 105,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:24010007847",
+      "date": "2026-08-17",
+      "distanceKm": 0.56,
+      "durationMin": 6.9,
+      "avgHeartRate": 135,
+      "notes": "Neuchatel Marche à pied"
+    },
+    {
+      "externalId": "garmin:24003101728",
+      "date": "2026-08-16",
+      "distanceKm": 3.39,
+      "durationMin": 43.5,
+      "avgHeartRate": 97,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:24002740967",
+      "date": "2026-08-16",
+      "distanceKm": 2.96,
+      "durationMin": 27.9,
+      "avgHeartRate": 128,
+      "notes": "La Chaux-de-Fonds Course à pied"
+    },
+    {
+      "externalId": "garmin:24002469864",
+      "date": "2026-08-16",
+      "distanceKm": 2.17,
+      "durationMin": 23.1,
+      "avgHeartRate": 103,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23947275387",
+      "date": "2026-08-12",
+      "distanceKm": 6.35,
+      "durationMin": 47.3,
+      "avgHeartRate": 148,
+      "notes": "La Chaux-de-Fonds Course à pied"
+    },
+    {
+      "externalId": "garmin:23941622871",
+      "date": "2026-08-11",
+      "distanceKm": 4.3,
+      "durationMin": 62.1,
+      "avgHeartRate": 86,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    },
+    {
+      "externalId": "garmin:23925383424",
+      "date": "2026-08-10",
+      "distanceKm": 7.33,
+      "durationMin": 94.2,
+      "avgHeartRate": 111,
+      "notes": "La Chaux-de-Fonds Marche à pied"
+    }
+  ],
+  "workouts": []
+}
